@@ -20,7 +20,7 @@ function getChatResponse() {
 }
 
 async function botResponse(responseText){
-    processLog("botResponse", `function called on data: ${responseText}`);
+    processLog("botResponse", `function called on data:: ${responseText}`);
     setTimeout(baselineBotResponse, 1400);
 }
 
@@ -33,7 +33,8 @@ function baselineBotResponse(){
     document.getElementById("mouth").style.fill = `#${randomColor}`;
     buildTranscript();
     document.getElementById("chatInput").disabled = false;
-    processLog("baselineBotResponse", `function called on data: ${responseGiven}`);
+
+    processLog("baselineBotResponse", `function called on data:: ${responseGiven}`);
 }
 
 function buildTranscript() {
