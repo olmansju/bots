@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script lang="" defer src="music.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <script lang="" defer src="statestatus.js"></script>
+    <script lang="" defer src="transcript.js"></script>
+    <script lang="" defer src="colorshape.js"></script>
+    <script lang="" defer src="tictactoe.js"></script>
+    <script lang="" defer src="art.js"></script>
+    <script defer src="face.js"></script>
+    <meta charset="utf-8"/>
+    <title>huskerBot</title>
+</head>
+<body>
+<div id="grid">
+    <div id="topLeft">Let's Make Art Together <br>
+        <canvas id="c" width="450" height="450" ></canvas> <br>
+        <button type="button" class="buttonArtClear">Start Over</button>
+    </div>
+
+    <div id="topMiddle">BotFace <br> Handsfree.js face mesh
+        <svg viewBox="-250 -250 500 500" id="facebox">
+            <circle x="-200"  r="200"></circle>
+            <ellipse id="eye" cx="60" cy="-50" rx="30" ry="20" fill=white stroke=black></ellipse>
+            <ellipse id="pupil" cx="60" cy="-50" rx="12" ry="12" fill=black stroke=white> </ellipse>
+            <ellipse id="eye2" cx="-60" cy="-50" rx="30" ry="20" fill=white stroke=black></ellipse>
+            <ellipse id="pupil2" cx="-60" cy="-50" rx="12" ry="12" fill=black stroke=white> </ellipse>
+            <ellipse id="mouth" cx="0" cy="70" rx="60" ry="30" fill=Gray stroke=Black ></ellipse>
+        </svg>
+<div id="dialog">
+-
+    <input type="button" class="buttonFace" value="Down-Left" onclick="lookDirection('dLeft')" />
+    <input type="button" class="buttonFace" value="Left" onclick="lookDirection('left')" />
+    <input type="button" class="buttonFace" value="Down" onclick="lookDirection('down')" />
+    <input type="button" class="buttonFace" value="Straight" onclick="lookDirection('straight')" />
+    <input type="button" class="buttonFace" value="Look Up" onclick="lookDirection('up')" />
+    <input type="button" class="buttonFace" value="Right" onclick="lookDirection('right')" />
+    <input type="button" class="buttonFace" value="Down-Right" onclick="lookDirection('dRight')" />
+</div>
+    </div>
+
+    <div id="topRight">Tic-Tac-Toe
+        <div class="game--container">
+            <div data-cell-index="0" class="cell"></div>
+            <div data-cell-index="1" class="cell"></div>
+            <div data-cell-index="2" class="cell"></div>
+            <div data-cell-index="3" class="cell"></div>
+            <div data-cell-index="4" class="cell"></div>
+            <div data-cell-index="5" class="cell"></div>
+            <div data-cell-index="6" class="cell"></div>
+            <div data-cell-index="7" class="cell"></div>
+            <div data-cell-index="8" class="cell"></div>
+        </div>
+        <h2 class="game--status"></h2>
+        <button class="game--restart">New Game</button>
+    </div>
+
+    <div id="middleLeft">Colors and Shapes
+        <svg viewBox="-250 -250 500 500" id="colorbox">
+            <ellipse class="colors--shapes" id="egg" cx="0" cy="-180" rx="30" ry="20" fill=white stroke=black></ellipse>
+            <ellipse class="colors--shapes" id="circleC" cx="60" cy="-50" rx="12" ry="12" fill=black stroke=black> </ellipse>
+            <ellipse class="colors--shapes" id="mouth" cx="-80" cy="-170" rx="30" ry="60" fill=blue stroke=Black ></ellipse>
+            <polygon class="colors--shapes" id="triangle" points="-200,-10 -250,-190 -160,-210" style="fill:lime;stroke:purple;stroke-width:1" />
+            <polygon class="colors--shapes" id="square" points="20,10 -20,20 -20,-30 20,-40" style="fill:red;stroke:purple;stroke-width:1" />
+        </svg>
+    </div>
+
+    <div id="middleMiddle">Chat Interface & Transcript
+        <div id="textInputDiv">
+            <p id="transcript">
+            </p>
+            <input type="button" id='buttonChat' class="buttonChat" value="Chat Button" onclick="getChatResponse()" />
+            <input type="text" id="chatInput" name="chatInput" onfocus="this.value=''" />
+        </div>
+    </div>
+
+    <div id="middleRight">Meme Window or Music or Video Player
+        <p></p><p></p><p></p>
+        <div class="music-container" id="music-container">
+            <div class="music-info">
+                <h4 id="title"></h4>
+                <div class="progress-container" id="progress-container">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+
+            <audio src="music/Polo G – I Know.mp3" id="audio"></audio>
+
+            <div class="img-container">
+                <img src="images/Polo G – I Know.jpg" alt="music-cover" id="cover" />
+            </div>
+            <div class="navigation">
+                <button id="prev" class="action-btn">
+                    <i class="fas fa-backward"></i>
+                </button>
+                <button id="play" class="action-btn action-btn-big">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="next" class="action-btn">
+                    <i class="fas fa-forward"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="bottomLeft">State Status
+        <div id="stateStatus">
+            <article id="stateStatusArticle">
+
+            </article>
+        </div>
+    </div>
+    <div id="bottomMiddle">Camera</div>
+    <div id="bottomRight">Progress Log</div>
+</div>
+
+</body>
+</html>

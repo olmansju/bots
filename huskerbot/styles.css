@@ -1,0 +1,335 @@
+/*  for music  */
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+/* for face */
+* { vector-effect: non-scaling-stroke } /* for face */
+
+/* for overall layout*/
+#grid {
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
+  grid-template-rows: 34% 33% 33%;
+}
+
+div{
+  padding: 0;
+  text-align:center; 
+}
+
+/* for face*/
+
+svg#facebox { max-width: 30em; width: 80vmin }
+
+[x] { 
+	fill: Bisque;
+	stroke: currentcolor;
+	cursor: pointer
+}
+
+.buttonFace {
+  background-color: #fcd049;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 86%;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.buttonFace:hover {
+  background-color: #e8bc33;
+}
+
+/*  for art  */
+
+div#topLeft{
+  padding: 0;
+  display: block;
+  text-align:left;
+}
+
+canvas#c {
+  border:1px solid #c3c3c3;
+  cursor:crosshair;
+  overflow:hidden;
+}
+
+.buttonArtClear {
+  background-color: #1970fc;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 86%;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.buttonArtClear:hover {
+  background-color: #1462e0;
+}
+
+/*  for tic-tac-toe  */
+
+section {
+  text-align: center;
+}
+
+.game--container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 306px;
+  margin: 50px auto;
+  text-align: center;
+  overflow: hidden;
+}
+.game--container div{
+  outline:2px solid #000;
+}
+.game--container div:last-child {
+  grid-area:3/3;
+}
+
+.cell {
+  font-family: "Permanent Marker", cursive;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 0 0 1px #333333;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+
+  line-height: 100px;
+  font-size: 60px;
+}
+
+.game--restart {
+  background-color: #f01811;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 86%;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.game--restart:hover {
+  background-color: #b80f09;
+}
+
+.game--status {
+  color: #e8dddc;
+  text-align: center;
+}
+
+/*  for music  */
+
+div#middleRight {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.music-container {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 20px 20px 0 rgba(252, 169, 169, 0.6);
+  display: flex;
+  padding: 20px 30px;
+  position: relative;
+  margin: 100px 0;
+  z-index: 10;
+}
+
+.img-container {
+  position: relative;
+  width: 110px;
+}
+
+.img-container::after {
+  content: '';
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, 50%);
+}
+
+.img-container img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 110px;
+  width: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: rotate 3s linear infinite;
+
+  animation-play-state: paused;
+}
+
+.music-container.play .img-container img {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.action-btn {
+  background-color: #fff;
+  border: 0;
+  color: #dfdbdf;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 20px;
+}
+
+.action-btn.action-btn-big {
+  color: #cdc2d0;
+  font-size: 30px;
+}
+
+.action-btn:focus {
+  outline: 0;
+}
+
+.music-info {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: calc(100% - 40px);
+  padding: 10px 10px 10px 150px;
+  opacity: 0;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  z-index: 0;
+}
+
+.music-container.play .music-info {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.music-info h4 {
+  margin: 0;
+}
+
+.progress-container {
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 4px;
+  width: 100%;
+}
+
+.progress {
+  background-color: #fe8daa;
+  border-radius: 5px;
+  height: 100%;
+  width: 0;
+  transition: width 0.1s linear;
+}
+
+/*  transcript  */
+
+div#textInputDiv{
+  background-image: linear-gradient(
+          0deg,
+          #111212,
+
+          white
+  );
+  border-radius: 25px;
+
+  color:white;
+  align:center;
+  padding:1%;
+}
+
+.buttonChat {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 86%;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.buttonChat:hover {
+  background-color: #3e8e41;
+}
+
+input#chatInput {
+  background-color: #232423;
+  border: 2px solid #37a354;
+  border-radius: 4px;
+  color: white;
+  width: 80%;
+  padding:0.7%;
+}
+
+input#chatInput:focus {
+  border: 2px solid #17fc67;
+  outline: none;
+}
+
+p#transcript {
+  margin-left: 166px;
+  font-size: 1.1em;
+  text-align: left;
+}
+
+/*  state status  */
+
+div#stateStatus{
+  background-image: linear-gradient(
+          0deg,
+          antiquewhite,
+          #100f0f
+  );
+  border-radius: 5px;
+
+  color:lawngreen;
+  align:left;
+  padding:1%;
+}
