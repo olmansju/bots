@@ -2,9 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bot00</title>
+    <link rel="stylesheet" href="styles.css">
+    <script lang="" defer src="transcript.js"></script>
 </head>
 <body>
+
+<div id="grid">
+    <div id="topLeft">Top Left <br>
+        <br>
+
+    </div>
+
+    <div id="topMiddle">Bot00 <br>
+        <svg viewBox="-250 -250 500 500" id="facebox">
+            <circle x="-200"  r="200"></circle>
+            <ellipse id="eye" cx="60" cy="-50" rx="30" ry="20" fill=white stroke=black></ellipse>
+            <ellipse id="pupil" cx="60" cy="-50" rx="12" ry="12" fill=black stroke=white> </ellipse>
+            <ellipse id="eye2" cx="-60" cy="-50" rx="30" ry="20" fill=white stroke=black></ellipse>
+            <ellipse id="pupil2" cx="-60" cy="-50" rx="12" ry="12" fill=black stroke=white> </ellipse>
+            <ellipse id="mouth" cx="0" cy="70" rx="60" ry="30" fill=Gray stroke=Black ></ellipse>
+        </svg>
+    </div>
+
+    <div id="topRight">Top Right
+
+    </div>
+
+    <div id="middleLeft">Text Transcript
+        <div id="fullTranscript" class="scrollClass"></div>
+    </div>
+
+    <div id="middleMiddle">Chat Interface
+        <div id="textInputDiv">
+            <p id="transcript">
+            </p>
+            <input type="button" id='buttonChat' class="buttonChat" value="Chat Button" onclick="getChatResponse()" />
+            <input type="text" id="chatInput" name="chatInput" onfocus="this.value=''" />
+        </div>
+    </div>
+
+    <div id="middleRight">Array
+        <div id="fullArray" class="scrollClass"></div>
+
+    </div>
+
+    <div id="bottomLeft">Bottom Left
+
+    </div>
+    <div id="bottomMiddle">Bottom Middle</div>
+    <div id="bottomRight">Bottom Right</div>
+</div>
 
 </body>
 </html>
