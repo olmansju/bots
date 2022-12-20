@@ -1,0 +1,106 @@
+
+
+
+/* for overall layout*/
+#grid {
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+    grid-template-rows: 34% 33% 33%;
+}
+
+div{
+    padding: 0;
+    text-align:center;
+}
+
+/* CSS for the face */
+
+* { vector-effect: non-scaling-stroke }
+
+svg#facebox { max-width: 30em; width: 80vmin }
+
+[x] {
+    fill: Bisque;
+    stroke: currentcolor;
+    cursor: pointer
+}
+
+.buttonFace {
+    background-color: #fcd049;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 86%;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.buttonFace:hover {
+    background-color: #e8bc33;
+}
+
+
+
+/*  chat interface  */
+
+div#textInputDiv{
+    background-image: linear-gradient(
+            0deg,
+            #111212,
+
+            white
+    );
+    border-radius: 25px;
+
+    color:white;
+    align:center;
+    padding:1%;
+}
+
+.buttonChat {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 86%;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.buttonChat:hover {
+    background-color: #3e8e41;
+}
+
+input#chatInput {
+    background-color: #232423;
+    border: 2px solid #37a354;
+    border-radius: 4px;
+    color: white;
+    width: 80%;
+    padding:0.7%;
+}
+
+input#chatInput:focus {
+    border: 2px solid #17fc67;
+    outline: none;
+}
+
+p#transcript {
+    margin-left: 166px;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+/*  transcript  */
+.scrollClass {
+    height: 200px;
+    overflow-y: scroll;
+}
