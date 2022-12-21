@@ -1,7 +1,8 @@
 
 const transcriptArray = [];
-const botName = "Bot02";
+const botName = "Bot03";
 let userName = "user";
+let prompt = `In the following conversation, you are Bot03, a helpful, creative, and kind phd advisor.`;
 
 document.getElementById("buttonChat").addEventListener("click", getChatResponse);
 
@@ -10,7 +11,7 @@ function getChatResponse() {
     console.log(userName);
     responseText = document.getElementById("chatInput").value;
     if (responseText !== "") {
-        transcriptArray.push([userName, responseText]);
+        transcriptArray.push([userName, responseText.trim()]);
         console.log('chat transcript: ', [userName, responseText]);
         document.getElementById("chatInput").value = "";
         buildTranscript();
@@ -21,19 +22,21 @@ function getChatResponse() {
 
 async function botResponse(responseText){
     processLog("botResponse", `passed data:: ${responseText}`);
-    callGPT3(responseText);
+    let preppedPrompt = prepPrompt(prompt, transcriptArray);
+    callGPT3(preppedPrompt);
 }
 
 async function callGPT3(userResponseText){
     let queryParameters = `?qField=message&qValue=${userResponseText}`;
     let responseGiven = await GPT3request(queryParameters);
-    transcriptArray.push([botName, responseGiven]);
+    let strippedResponse = responseGiven[0]["GPT3response"].trim();
+    transcriptArray.push([botName, strippedResponse]);
     console.log('bot response: ', responseGiven);
     document.getElementById("chatInput").focus();
     buildTranscript();
     document.getElementById("chatInput").disabled = false;
 
-    processLog("callGPT3", `generated response:: ${responseGiven}`);
+    processLog("callGPT3", `generated response:: ${strippedResponse}`);
 }
 
 function buildTranscript() {

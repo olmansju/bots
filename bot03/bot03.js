@@ -1,4 +1,18 @@
 
+function prepPrompt(prompt, arrayOfTransaction){
+    let formattedModel = formatArrayIntoModelPrompt(arrayOfTransaction);
+    let theFullPromptAndModel = `${prompt}\n${formattedModel}`;
+    document.getElementById("fullPrompt").innerText = theFullPromptAndModel;
+    return theFullPromptAndModel;
+}
+
+function formatArrayIntoModelPrompt(arrayOfTransaction){
+    let model = "";
+    arrayOfTransaction.forEach(dialoguePair => {
+        model += `\n${dialoguePair[0]}: ${dialoguePair[1]}`;
+    } );
+    return model;
+}
 
 async function GPT3request(searchParams = null){
     console.log('GPT3request called');
