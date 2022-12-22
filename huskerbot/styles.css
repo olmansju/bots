@@ -1,3 +1,7 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 /*  for music  */
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
@@ -272,11 +276,11 @@ div#textInputDiv{
           0deg,
           #111212,
 
-          white
+          lightgreen
   );
   border-radius: 25px;
 
-  color:white;
+  color:black;
   align:center;
   padding:1%;
 }

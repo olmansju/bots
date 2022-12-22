@@ -1,5 +1,7 @@
 
-
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
 
 /* for overall layout*/
 #grid {
@@ -52,11 +54,11 @@ div#textInputDiv{
             0deg,
             #111212,
 
-            white
+            lightgreen
     );
     border-radius: 25px;
 
-    color:white;
+    color:black;
     align:center;
     padding:1%;
 }
