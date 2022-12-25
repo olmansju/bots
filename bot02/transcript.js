@@ -27,13 +27,14 @@ async function botResponse(responseText){
 async function callGPT3(userResponseText){
     let queryParameters = `?qField=message&qValue=${userResponseText}`;
     let responseGiven = await GPT3request(queryParameters);
-    transcriptArray.push([botName, responseGiven]);
-    console.log('bot response: ', responseGiven);
+    let strippedResponse = responseGiven[0]["GPT3response"].trim().replace(`${botName}:`, '').replace(/\n/g,'');
+    transcriptArray.push([botName, strippedResponse]);
+    console.log('bot response: ', strippedResponse);
     document.getElementById("chatInput").focus();
     buildTranscript();
     document.getElementById("chatInput").disabled = false;
 
-    processLog("callGPT3", `generated response:: ${responseGiven}`);
+    processLog("callGPT3", `generated response:: ${strippedResponse}`);
 }
 
 function buildTranscript() {

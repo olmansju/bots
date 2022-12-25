@@ -59,7 +59,7 @@ div#textInputDiv{
     border-radius: 25px;
 
     color:black;
-    align:center;
+    align:left;
     padding:1%;
 }
 
@@ -96,7 +96,7 @@ input#chatInput:focus {
 }
 
 p#transcript {
-    margin-left: 166px;
+    margin-left: 4%;
     font-size: 1.1em;
     text-align: left;
 }

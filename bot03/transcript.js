@@ -1,7 +1,7 @@
 
 const transcriptArray = [];
 const botName = "Bot03";
-let userName = "user";
+let userName = "User";
 let prompt = `In the following conversation, you are ${botName}, a helpful, creative, and kind phd advisor.`;
 
 document.getElementById("buttonChat").addEventListener("click", getChatResponse);
@@ -54,7 +54,7 @@ function buildTranscript() {
 
 function formatTranscript(thePassedTranscriptArray, theElementID){
     let formatted = "";
-    thePassedTranscriptArray.forEach(value=> formatted += `${value[0]}: ${value[1]} <br>`);
+    thePassedTranscriptArray.forEach(value=> formatted += `<b>${value[0]}</b>: ${value[1]} <br>`);
     document.getElementById(theElementID).innerHTML = formatted;
 }
 
