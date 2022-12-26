@@ -1,0 +1,125 @@
+@import url("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/default.min.css");
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* for overall layout*/
+#grid {
+    display: grid;
+    grid-template-columns: 45% 5% 45%;
+    grid-template-rows: 20% 90% 10%;
+    column-gap: 5px;
+    row-gap: 5px;
+}
+
+div{
+    padding: 0;
+    text-align:center;
+}
+
+/* CSS for the face */
+
+* { vector-effect: non-scaling-stroke }
+
+svg#facebox { max-width: 10em; width: 24vmin }
+
+[x] {
+    fill: yellow;
+    stroke: currentcolor;
+    cursor: pointer
+}
+
+.buttonFace {
+    background-color: #fcd049;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 86%;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.buttonFace:hover {
+    background-color: #e8bc33;
+}
+
+div#fullResponse {
+    text-align: left;
+}
+
+/*  chat interface  */
+
+div#textInputDiv{
+    background-image: linear-gradient(
+            0deg,
+            #111212,
+
+            lightgreen
+    );
+    border-radius: 25px;
+
+    color:black;
+    align:left;
+    padding:1%;
+}
+
+.buttonInput {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 86%;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.buttonInput:hover {
+    background-color: #3e8e41;
+}
+
+input#codeInput {
+    background-color: #232423;
+    border: 2px solid #37a354;
+    border-radius: 4px;
+    color: white;
+    width: 80%;
+    padding:0.7%;
+}
+
+input#codeInput:focus {
+    border: 2px solid #17fc67;
+    outline: none;
+}
+
+p#transcript {
+    margin-left: 4%;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+/*  transcript  */
+.scrollClass {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+/* ambient */
+.ambientProcessingClass {
+    background-color: #17fc67;
+}
+
+/* codeInput */
+.codeInputClass {
+    width: 90%;
+    max-width: 90%;
+    max-height: 90%;
+}

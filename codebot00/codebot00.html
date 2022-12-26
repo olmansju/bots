@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Codebot00</title>
+    <link rel="stylesheet" href="../stylescodebot.css">
+    <link class="codestyle" rel="prefetch alternate stylesheet" href="../agate.css">
+    <script lang="" defer src="../processing.js"></script>
+    <script lang="" defer src="codebot00.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+
+<div id="grid">
+    <div id="topLeft">Select Request Context <br>
+        <br>
+        <div id="inputOptions" class="inputClass">
+            <label for="language">Select Programming Language:</label>
+            <select id="language" name="language">
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="TypeScript">TypeScript</option>
+                <option value="Perl">Perl</option>
+                <option value="PHP">PHP</option>
+                <option value="Ruby">Ruby</option>
+                <option value="Swift">Swift</option>
+                <option value="SQL">SQL</option>
+                <option value="Shell">Shell</option>
+                <option value="general">In general...</option>
+            </select>
+            <br><br>
+            <label for="csFamiliarity">Familiarity with Programming / Computer Science:</label>
+            <select id="csFamiliarity" name="csFamiliarity">
+                <option value="a Beginner">Beginner: little to no coding knowledge</option>
+                <option value="an Advanced Beginner">Advanced Beginner: 2-12 months experience</option>
+                <option value="an Intermediate">Intermediate: Average Software Developer</option>
+                <option value="an Advanced">Advanced: Team Lead Developer</option>
+                <option value="an Expert">Expert: Leads Multiple Team Leaders</option>
+            </select>
+            <br><br>
+                <label for="request">Request:</label>
+                <select id="request" name="request">
+                    <option value="how do I write a function that">How do I write a function that...</option>
+                    <option value="what does the following error mean?">What does the following error mean?</option>
+                    <option value="what is wrong with my code?">What is wrong with my code?</option>
+                    <option value="what would be a better way to write this code?">What would be a better way to write this code?</option>
+                    <option value="please explain the following code?">Please explain the following... </option>
+                    <option value="could you explain this function?">Please explain the following... </option>
+                    <option value="could you explain these data structures?">I have a question about data structures...</option>
+                    <option value="could you explain these testing procedures.">I have a question about testing procedures...</option>
+                    <option value="could you explain these cloud platforms.">I have a question about cloud platforms...</option>
+                    <option value="I have a question about operating systems.">I have a question about operating systems...</option>
+                    <option value="what is your recommendation if I want to do the following:">What do you recommend if I want to...?</option>
+                </select>
+                <br><br>
+
+        </div>
+    </div>
+
+    <div id="topMiddle" class="ambientProcessingClass">...
+        <div id="ambientProcessing"></div>
+    </div>
+
+    <div id="topRight">codebot00: <br>
+        <svg viewBox="-25 -25 50 50" id="facebox">
+            <circle x="-20"  r="20"></circle>
+            <ellipse id="eye" cx="6" cy="-5" rx="3" ry="2" fill=white stroke=black></ellipse>
+            <ellipse id="pupil" cx="6" cy="-5" rx="1.2" ry="1.2" fill=black stroke=white> </ellipse>
+            <ellipse id="eye2" cx="-6" cy="-5" rx="3" ry="2" fill=white stroke=black></ellipse>
+            <ellipse id="pupil2" cx="-6" cy="-5" rx="1.2" ry="1.2" fill=black stroke=white> </ellipse>
+            <ellipse id="mouth" cx="0" cy="7" rx="6" ry="3" fill=lightgreen stroke=darkgreen ></ellipse>
+        </svg>
+    </div>
+
+    <div id="middleLeft">Paste your code or question here:
+        <div id="codeInputDiv" class="codeInputClass">
+            <label for="codeInput"></label>
+            <textarea id="codeInput" name="codeInput" class="codeInputClass" rows="4" cols="50">...</textarea>
+            <input type="button" id='buttonInput' class="buttonInput" value="Send Button" onclick="getResponse()" />
+        </div>
+    </div>
+
+    <div id="middleMiddle" class="ambientProcessingClass">
+    </div>
+
+    <div id="middleRight">Response
+        <div id="fullResponse" class="scrollClass"></div>
+    </div>
+
+    <div id="bottomLeft">Prompt
+        <div id="prompt" class="scrollClass"></div>
+    </div>
+    <div id="bottomMiddle" class="ambientProcessingClass">...</div>
+    <div id="bottomRight"></div>
+</div>
+
+</body>
+</html>
