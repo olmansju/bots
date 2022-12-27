@@ -5,6 +5,7 @@ const transcriptArray = [];
 document.getElementById("buttonInput").addEventListener("click", getResponse);
 
 function getResponse() {
+    waiting('orange');
     let programmingLanguage = document.getElementById("language").value;
     let CSlevel = document.getElementById("csFamiliarity").value;
     let requestTheme = document.getElementById("request").value;
@@ -14,11 +15,10 @@ function getResponse() {
         let preppedPrompt = prepPrompt(programmingLanguage, CSlevel, requestTheme, trimmedcodeInput);
         transcriptArray.push([userName, preppedPrompt]);
         formatPrompt(preppedPrompt, "prompt");
+        botResponse(preppedPrompt, programmingLanguage);
         let codeHighlight = formatResponse(trimmedcodeInput, programmingLanguage);
         document.getElementById("codeInput").innerHTML = codeHighlight;
         hljs.highlightAll();
-        document.getElementById("codeInput").disabled = true;
-        botResponse(preppedPrompt, programmingLanguage);
     }
 }
 
@@ -43,6 +43,7 @@ async function botResponse(prompt, lang){
 async function callGPT3(userCodeQuery, lang){
     let queryParameters = `?qField=message&qValue=${userCodeQuery}`;
     let responseGiven = await GPT3request(queryParameters);
+    waiting('lightgreen');
     console.log("responseReceived", responseGiven);
     let theFirstResponse = responseGiven[0]["GPT3response"];
     transcriptArray.push([codeBotName, theFirstResponse]);
@@ -67,4 +68,11 @@ async function GPT3request(searchParams = null){
     let GPT3response = await response.json();
     console.log('response', GPT3response);
     return GPT3response;
+}
+
+function waiting(DIVcolor){
+    document.getElementById('topMiddle').style.backgroundColor = DIVcolor;
+    document.getElementById('middleMiddle').style.backgroundColor = DIVcolor;
+    document.getElementById('bottomMiddle').style.backgroundColor = DIVcolor;
+    document.getElementById("mouth").style.fill = DIVcolor;
 }
