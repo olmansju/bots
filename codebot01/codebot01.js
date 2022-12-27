@@ -1,6 +1,8 @@
 let codeBotName = "CodeBot01";
 let userName = "user";
 const transcriptArray = [];
+let mod = "code-davinci-002";
+let temp = 0;
 
 document.getElementById("buttonInput").addEventListener("click", getResponse);
 
@@ -40,32 +42,33 @@ async function botResponse(prompt, lang){
     callGPT3(prompt, lang);
 }
 
-async function callGPT3(userCodeQuery, lang){
-    let queryParameters = `?qField=message&qValue=${userCodeQuery}`;
-    let responseGiven = await GPT3request(queryParameters);
+async function callGPT3(prompt, lang){
+    let responseGiven = await GPT3request(prompt, lang);
     waiting('lightgreen');
     console.log("responseReceived", responseGiven);
-    let theFirstResponse = responseGiven[0]["GPT3response"];
-    transcriptArray.push([codeBotName, theFirstResponse]);
+    transcriptArray.push([codeBotName, responseGiven]);
     document.getElementById("codeInput").disabled = false;
-    let formattedResponse = formatResponse(theFirstResponse, lang);
+    let formattedResponse = formatResponse(responseGiven, lang);
     document.getElementById("fullResponse").innerHTML = formattedResponse;
     hljs.highlightAll();
 }
 
-async function GPT3request(searchParams = null){
-    console.log('GPT3request called');
-    let URLplusQuery;
-    if (searchParams){
-        URLplusQuery = '/codeGPT3' + searchParams;
-        console.log('GPT3request called w params:', searchParams);
-    } else {
-        URLplusQuery = '/codeGPT3';
-        console.log('GPT3request called w NO params');
-    }
-    const response = await fetch(URLplusQuery);
-    if (!response.ok){ console.log('Fetch error: ', response.status);}
-    let GPT3response = await response.json();
+async function GPT3request(prompt){
+    let res;
+    await axios.post('/GPT3post', {
+        codexPrompt: prompt,
+        temperature: temp,
+        model: mod
+    })
+        .then(function (response) {
+            res = response;
+            console.log('post response is:', res);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    if (!res.ok){ console.log('Fetch error: ', res.status);}
+    let GPT3response = res["data"][0]["GPT3response"];
     console.log('response', GPT3response);
     return GPT3response;
 }

@@ -1,4 +1,4 @@
-let codeBotName = "CodeBot00";
+let codeBotName = "CodeBot02";
 let userName = "user";
 const transcriptArray = [];
 let mod = "code-davinci-002";
@@ -7,42 +7,21 @@ let temp = 0;
 document.getElementById("buttonInput").addEventListener("click", getResponse);
 
 function getResponse() {
-    let programmingLanguage;
-    let CSlevel;
-    let requestTheme;
-    let codeInput;
-    console.log(transcriptArray);
-    programmingLanguage = document.getElementById("language").value;
-    CSlevel = document.getElementById("csFamiliarity").value;
-    requestTheme = document.getElementById("request").value;
-    codeInput = document.getElementById("codeInput").value;
+    waiting('orange');
+    let programmingLanguage = document.getElementById("language").value;
+    let CSlevel = document.getElementById("csFamiliarity").value;
+    let requestTheme = document.getElementById("request").value;
+    let codeInput = document.getElementById("codeInput").value;
     let trimmedcodeInput = codeInput.trim();
     if (trimmedcodeInput !== "") {
         let preppedPrompt = prepPrompt(programmingLanguage, CSlevel, requestTheme, trimmedcodeInput);
         transcriptArray.push([userName, preppedPrompt]);
-        console.log('code transcript: ', [userName, preppedPrompt]);
-        //document.getElementById("chatInput").value = "";
-        formatTranscript(transcriptArray, "prompt");
+        formatPrompt(preppedPrompt, "prompt");
+        botResponse(preppedPrompt, programmingLanguage);
         let codeHighlight = formatResponse(trimmedcodeInput, programmingLanguage);
         document.getElementById("codeInput").innerHTML = codeHighlight;
-        document.getElementById("codeInput").disabled = true;
-        botResponse(preppedPrompt, programmingLanguage);
+        hljs.highlightAll();
     }
-}
-
-async function botResponse(prompt, lang){
-    callGPT3(prompt, lang);
-}
-
-function formatResponse(response, lang){
-    let formatted = `<pre><code class='language-${lang.toLowerCase()}'> ${response} </code></pre>`;
-    return formatted;
-}
-
-function formatTranscript(thePassedTranscriptArray, theElementID){
-    let formatted = "";
-    thePassedTranscriptArray.forEach(value=> formatted += `<b>${value[0]}</b>: ${value[1]} <br>`);
-    document.getElementById(theElementID).innerHTML = formatted;
 }
 
 function prepPrompt(lang, level, theme, codeInput){
@@ -50,8 +29,22 @@ function prepPrompt(lang, level, theme, codeInput){
     return fullPrompt;
 }
 
+function formatPrompt(thePassedPrompt, theElementID){
+    document.getElementById(theElementID).innerHTML = thePassedPrompt;
+}
+
+function formatResponse(response, lang){
+    let formatted = `<pre><code class='language-${lang.toLowerCase()}'> ${response} </code></pre>`;
+    return formatted;
+}
+
+async function botResponse(prompt, lang){
+    callGPT3(prompt, lang);
+}
+
 async function callGPT3(prompt, lang){
     let responseGiven = await GPT3request(prompt, lang);
+    waiting('lightgreen');
     console.log("responseReceived", responseGiven);
     transcriptArray.push([codeBotName, responseGiven]);
     document.getElementById("codeInput").disabled = false;
@@ -66,7 +59,7 @@ async function GPT3request(prompt){
         codexPrompt: prompt,
         temperature: temp,
         model: mod
-    })
+        })
         .then(function (response) {
             res = response;
             console.log('post response is:', res);
@@ -80,4 +73,9 @@ async function GPT3request(prompt){
     return GPT3response;
 }
 
-hljs.highlightAll();
+function waiting(DIVcolor){
+    document.getElementById('topMiddle').style.backgroundColor = DIVcolor;
+    document.getElementById('middleMiddle').style.backgroundColor = DIVcolor;
+    document.getElementById('bottomMiddle').style.backgroundColor = DIVcolor;
+    document.getElementById("mouth").style.fill = DIVcolor;
+}

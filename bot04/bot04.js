@@ -1,4 +1,4 @@
-const botName = "Bot03";
+const botName = "Bot04";
 let userName = "User";
 let prompt = `In the following conversation, you are ${botName}, a helpful, creative, and kind phd advisor.`;
 let mod = "text-davinci-003";
