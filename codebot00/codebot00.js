@@ -16,6 +16,7 @@ function getResponse() {
     CSlevel = document.getElementById("csFamiliarity").value;
     requestTheme = document.getElementById("request").value;
     codeInput = document.getElementById("codeInput").value;
+    let univID = document.getElementById("univID").value;
     let trimmedcodeInput = codeInput.trim();
     if (trimmedcodeInput !== "") {
         let preppedPrompt = prepPrompt(programmingLanguage, CSlevel, requestTheme, trimmedcodeInput);
@@ -26,12 +27,12 @@ function getResponse() {
         let codeHighlight = formatResponse(trimmedcodeInput, programmingLanguage);
         document.getElementById("codeInput").innerHTML = codeHighlight;
         document.getElementById("codeInput").disabled = true;
-        botResponse(preppedPrompt, programmingLanguage);
+        botResponse(preppedPrompt, programmingLanguage, univID);
     }
 }
 
-async function botResponse(prompt, lang){
-    callGPT3(prompt, lang);
+async function botResponse(prompt, lang, userID){
+    callGPT3codeUI(prompt, lang, userID);
 }
 
 function formatResponse(response, lang){
@@ -48,36 +49,6 @@ function formatTranscript(thePassedTranscriptArray, theElementID){
 function prepPrompt(lang, level, theme, codeInput){
     let fullPrompt = `"""${level} asks: in ${lang}, ${theme}"""\n\n${codeInput}`;
     return fullPrompt;
-}
-
-async function callGPT3(prompt, lang){
-    let responseGiven = await GPT3request(prompt, lang);
-    console.log("responseReceived", responseGiven);
-    transcriptArray.push([codeBotName, responseGiven]);
-    document.getElementById("codeInput").disabled = false;
-    let formattedResponse = formatResponse(responseGiven, lang);
-    document.getElementById("fullResponse").innerHTML = formattedResponse;
-    hljs.highlightAll();
-}
-
-async function GPT3request(prompt){
-    let res;
-    await axios.post('/GPT3post', {
-        codexPrompt: prompt,
-        temperature: temp,
-        model: mod
-    })
-        .then(function (response) {
-            res = response;
-            console.log('post response is:', res);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    if (!res.ok){ console.log('Fetch error: ', res.status);}
-    let GPT3response = res["data"][0]["GPT3response"];
-    console.log('response', GPT3response);
-    return GPT3response;
 }
 
 hljs.highlightAll();

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../stylescodebot.css">
     <link class="codestyle" rel="prefetch alternate stylesheet" href="../agate.css">
     <script lang="" defer src="codebot02.js"></script>
+    <script lang="" defer src="../botGPT3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -16,6 +17,8 @@
     <div id="topLeft">Select Request Context <br>
         <br>
         <div id="inputOptions" class="inputClass">
+            <label for="univID">Add your university ID here</label>
+            <input type="text" id="univID" name="univID" minlength="8" required><br><br>
             <label for="language">Select Programming Language:</label>
             <select id="language" name="language">
                 <option value="Python">Python</option>

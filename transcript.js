@@ -6,6 +6,7 @@ function getChatResponse() {
     let responseText;
     console.log(userName);
     responseText = document.getElementById("chatInput").value;
+    let univID = document.getElementById("univID").value;
     let trimmedResponseText = responseText.trim();
     if (responseText !== "") {
         transcriptArray.push([userName, trimmedResponseText]);
@@ -13,7 +14,7 @@ function getChatResponse() {
         document.getElementById("chatInput").value = "";
         buildTranscript();
         document.getElementById("chatInput").disabled = true;
-        botResponse(trimmedResponseText);
+        botResponse(trimmedResponseText, univID);
     }
 }
 

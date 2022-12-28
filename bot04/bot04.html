@@ -7,6 +7,7 @@
     <script lang="" defer src="../transcript.js"></script>
     <script lang="" defer src="../processing.js"></script>
     <script lang="" defer src="bot04.js"></script>
+    <script lang="" defer src="../botGPT3.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
@@ -53,7 +54,10 @@
     <div id="bottomLeft">Bottom Left
 
     </div>
-    <div id="bottomMiddle">Bottom Middle</div>
+    <div id="bottomMiddle">
+        <label for="univID">Add your university ID here</label><br>
+        <input type="text" id="univID" name="univID" minlength="8" required><br><br>
+    </div>
     <div id="bottomRight">Bottom Right</div>
 </div>
 
