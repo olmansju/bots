@@ -26,10 +26,39 @@ function getResponse() {
 }
 
 function prepPrompt(lang, level, theme, codeInput){
-    let fullPrompt = `"""${level} asks: in ${lang}, ${theme}"""\n\n${codeInput}`;
-    let commentCharacter = "#"; //python default
-    //case or switch statement for each language to change up the comment character
-    //case or switch for each type of question to change up the prompt formatting
+    const commentOptions = {
+        'Python': '#',
+        'JavaScript': '//',
+        'TypeScript': '//',
+        'Perl': '#',
+        'PHP': '//',
+        'Ruby': '#',
+        'Swift': '///',
+        'SQL': '--',
+        'Shell': '#',
+        'In general': '#'
+    };
+    let commentChar = commentOptions[lang];
+    const queryOptions = {
+        'codeRequest': `${commentChar} ${lang}\n ${commentChar} Write a function that ${codeInput}\n\n`,
+        'dataRequest': `${commentChar} ${lang}\n ${commentChar} Generate data that ${codeInput}\n\n`,
+        'databaseRequest': `${commentChar} ${lang}\n ${commentChar} Create a query that ${codeInput}\n\n`,
+        'explainCodeRequest': `${codeInput}\n\n ${commentChar} Explain what the previous code is doing:\n\n It`,
+        'debugRequest': `${codeInput}\n\n ${commentChar} Debug the previous code.\n\n`,
+        'codeImprovementRequest': `${codeInput}\n\n ${commentChar} Refactor the previous code.\n\n`,
+        'codeTransformationToPython': `${commentChar} Translate this code from ${lang} into Python\n\n ${codeInput}\n\n ${commentChar} ${lang}\n\n`
+    };
+    let fullPrompt = queryOptions[theme];
+    const queryModel = {
+        'codeRequest': "code-davinci-002",
+        'dataRequest': "code-davinci-002",
+        'databaseRequest': "code-davinci-002",
+        'explainCodeRequest': "code-davinci-002",
+        'debugRequest': "code-davinci-002",
+        'codeImprovementRequest': "code-davinci-002",
+        'codeTransformationToPython': "code-davinci-002"
+    };
+    mod = queryModel[theme];
     return fullPrompt;
 }
 
