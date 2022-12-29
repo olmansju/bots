@@ -7,9 +7,11 @@ let temp = 0;
 document.getElementById("buttonInput").addEventListener("click", getResponse);
 
 function getResponse() {
+    console.log('Send Button Pressed...');
     waiting('orange');
     let programmingLanguage = document.getElementById("language").value;
     let CSlevel = document.getElementById("csFamiliarity").value;
+    let answerLength = document.getElementById("answerLength").value;
     let requestTheme = document.getElementById("request").value;
     let codeInput = document.getElementById("codeInput").value;
     let univID = document.getElementById("univID").value;
@@ -18,7 +20,7 @@ function getResponse() {
         let preppedPrompt = prepPrompt(programmingLanguage, CSlevel, requestTheme, trimmedcodeInput);
         transcriptArray.push([userName, preppedPrompt]);
         formatPrompt(preppedPrompt, "prompt");
-        botResponse(preppedPrompt, programmingLanguage, univID);
+        botResponse(preppedPrompt, programmingLanguage, univID, answerLength);
         let codeHighlight = formatResponse(trimmedcodeInput, programmingLanguage);
         document.getElementById("codeInput").innerHTML = codeHighlight;
         hljs.highlightAll();
@@ -46,7 +48,7 @@ function prepPrompt(lang, level, theme, codeInput){
         'explainCodeRequest': `${codeInput}\n\n ${commentChar} Explain what the previous code is doing:\n\n It`,
         'debugRequest': `${codeInput}\n\n ${commentChar} Debug the previous code.\n\n`,
         'codeImprovementRequest': `${codeInput}\n\n ${commentChar} Refactor the previous code.\n\n`,
-        'codeTransformationToPython': `${commentChar} Translate this code from ${lang} into Python\n\n ${codeInput}\n\n ${commentChar} ${lang}\n\n`
+        'codeTransformationToPython': `${commentChar} Translate this code from ${lang} into Python\n\n ${commentChar} ${lang}\n\n ${codeInput}\n\n # Python`
     };
     let fullPrompt = queryOptions[theme];
     const queryModel = {
@@ -71,6 +73,6 @@ function formatResponse(response, lang){
     return formatted;
 }
 
-async function botResponse(prompt, lang, userID){
-    callGPT3codeUI(prompt, lang, userID);
+async function botResponse(prompt, lang, userID, answerLeng){
+    callGPT3codeUI(prompt, lang, userID, answerLeng);
 }

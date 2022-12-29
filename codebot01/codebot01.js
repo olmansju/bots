@@ -40,5 +40,5 @@ function formatResponse(response, lang){
 }
 
 async function botResponse(prompt, lang, userID){
-    callGPT3codeUI(prompt, lang, userID);
+    callGPT3codeUI(prompt, lang, userID, '100');
 }

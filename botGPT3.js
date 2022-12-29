@@ -1,6 +1,7 @@
 
 async function callGPT3botUI(userResponseText, userID){
-    let responseGiven = await GPT3request(userResponseText, userID);
+    console.log('calling callGPT3botUI function...');
+    let responseGiven = await GPT3request(userResponseText, userID, '100');
     let strippedResponse = responseGiven.trim().replace(`${botName}:`, '').replace(/\n/g,' ');
     transcriptArray.push([botName, strippedResponse]);
     console.log('bot response: ', responseGiven);
@@ -10,8 +11,9 @@ async function callGPT3botUI(userResponseText, userID){
     processLog("callGPT3", `generated response:: ${strippedResponse}`);
 }
 
-async function callGPT3codeUI(prompt, lang, userID){
-    let responseGiven = await GPT3request(prompt, userID);
+async function callGPT3codeUI(prompt, lang, userID, answerLength){
+    console.log('calling callGPT3codeUI function...');
+    let responseGiven = await GPT3request(prompt, userID, answerLength);
     waiting('lightgreen');
     console.log("responseReceived", responseGiven);
     transcriptArray.push([codeBotName, responseGiven]);
@@ -21,11 +23,13 @@ async function callGPT3codeUI(prompt, lang, userID){
     hljs.highlightAll();
 }
 
-async function GPT3request(prompt, userID){
+async function GPT3request(prompt, userID, answerLength){
     let res;
+    console.log('calling Express /GPT3post', 'prompt is:', prompt);
     await axios.post('/GPT3post', {
         codexPrompt: prompt,
         temperature: temp,
+        ansLength: answerLength,
         univID: userID,
         model: mod
     })

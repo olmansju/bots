@@ -42,6 +42,16 @@
                 <option value="an Expert">Expert: Leads Multiple Team Leaders</option>
             </select>
             <br><br>
+            <label for="answerLength">Answer Length: (start small and adjust and rerun if needed)</label>
+            <select id="answerLength" name="answerLength">
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="500">500</option>
+                <option value="800">800</option>
+                <option value="1300">1300</option>
+            </select>
+            <br><br>
                 <label for="request">Request:</label>
                 <select id="request" name="request">
                     <option value="codeRequest">Write a function that...</option>
@@ -76,7 +86,7 @@
         <div id="codeInputDiv" class="codeInputClass">
             <label for="codeInput"></label>
             <textarea id="codeInput" name="codeInput" class="codeInputClass" rows="4" cols="50">...</textarea>
-            <input type="button" id='buttonInput' class="buttonInput" value="Send Button" onclick="getResponse()" />
+            <input type="button" id='buttonInput' class="buttonInput" value="Send Button" />
         </div>
     </div>
 
