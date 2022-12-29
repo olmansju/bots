@@ -27,7 +27,7 @@ async function GPT3request(prompt, userID, answerLength){
     let res;
     console.log('calling Express /GPT3post', 'prompt is:', prompt);
     await axios.post('/GPT3post', {
-        codexPrompt: prompt,
+        enteredPrompt: prompt,
         temperature: temp,
         ansLength: answerLength,
         univID: userID,
