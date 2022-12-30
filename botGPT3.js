@@ -1,19 +1,22 @@
 
-async function callGPT3botUI(userResponseText, userID){
+async function callGPT3botUI(userResponseText, userID, mod = "text-davinci-003", temp = 1){
     console.log('calling callGPT3botUI function...');
-    let responseGiven = await GPT3request(userResponseText, userID, '100');
+    let responseGiven = await GPT3request(userResponseText, userID, '100', mod, temp);
     let strippedResponse = responseGiven.trim().replace(`${botName}:`, '').replace(/\n/g,' ');
     transcriptArray.push([botName, strippedResponse]);
     console.log('bot response: ', responseGiven);
+    if (parseInt(botName.split('Bot')[1], 10) > 4){
+        chatSummary(userID);
+    }
     document.getElementById("chatInput").focus();
     buildTranscript();
     document.getElementById("chatInput").disabled = false;
     processLog("callGPT3", `generated response:: ${strippedResponse}`);
 }
 
-async function callGPT3codeUI(prompt, lang, userID, answerLength){
+async function callGPT3codeUI(prompt, lang, userID, answerLength, mod = "code-davinci-002", temp = 0){
     console.log('calling callGPT3codeUI function...');
-    let responseGiven = await GPT3request(prompt, userID, answerLength);
+    let responseGiven = await GPT3request(prompt, userID, answerLength, mod, temp);
     waiting('lightgreen');
     console.log("responseReceived", responseGiven);
     transcriptArray.push([codeBotName, responseGiven]);
@@ -23,7 +26,7 @@ async function callGPT3codeUI(prompt, lang, userID, answerLength){
     hljs.highlightAll();
 }
 
-async function GPT3request(prompt, userID, answerLength){
+async function GPT3request(prompt, userID, answerLength, mod, temp){
     let res;
     console.log('calling Express /GPT3post', 'prompt is:', prompt);
     await axios.post('/GPT3post', {

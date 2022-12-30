@@ -19,10 +19,10 @@ div{
 
 * { vector-effect: non-scaling-stroke }
 
-svg#facebox { max-width: 30em; width: 80vmin }
+svg#facebox { max-width: 10em; width: 24vmin }
 
 [x] {
-    fill: Bisque;
+    fill: yellow;
     stroke: currentcolor;
     cursor: pointer
 }
