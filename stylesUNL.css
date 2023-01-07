@@ -1,15 +1,15 @@
-@import url("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/default.min.css");
 
 body {
     font-family: Helvetica, Arial, sans-serif;
+    background-color: #d00000;
+    color: #f5f1e7;
 }
 
 /* for overall layout*/
 #grid {
     display: grid;
-    grid-template-columns: 45% 3% 45%;
-    grid-template-rows: 35% 55% 8%;
-    column-gap: 5px;
+    grid-template-columns: 33% 34% 33%;
+    grid-template-rows: 34% 33% 33%;
 }
 
 div{
@@ -24,7 +24,7 @@ div{
 svg#facebox { max-width: 10em; width: 24vmin }
 
 [x] {
-    fill: yellow;
+    fill: #f5f1e7;
     stroke: currentcolor;
     cursor: pointer
 }
@@ -47,27 +47,25 @@ svg#facebox { max-width: 10em; width: 24vmin }
     background-color: #e8bc33;
 }
 
-div#fullResponse {
-    text-align: left;
-}
+
 
 /*  chat interface  */
 
 div#textInputDiv{
     background-image: linear-gradient(
             0deg,
-            #111212,
+            darkgreen,
 
             lightgreen
     );
     border-radius: 25px;
 
-    color:black;
+    color:#d00000;
     align:left;
     padding:1%;
 }
 
-.buttonInput {
+.buttonChat {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -81,11 +79,11 @@ div#textInputDiv{
     border-radius: 6px;
 }
 
-.buttonInput:hover {
+.buttonChat:hover {
     background-color: #3e8e41;
 }
 
-input#codeInput {
+input#chatInput {
     background-color: #232423;
     border: 2px solid #37a354;
     border-radius: 4px;
@@ -94,7 +92,7 @@ input#codeInput {
     padding:0.7%;
 }
 
-input#codeInput:focus {
+input#chatInput:focus {
     border: 2px solid #17fc67;
     outline: none;
 }
@@ -109,16 +107,4 @@ p#transcript {
 .scrollClass {
     height: 200px;
     overflow-y: scroll;
-}
-
-/* ambient */
-.ambientProcessingClass {
-    background-color: #17fc67;
-}
-
-/* codeInput */
-.codeInputClass {
-    width: 90%;
-    max-width: 90%;
-    max-height: 90%;
 }
