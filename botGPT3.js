@@ -45,6 +45,10 @@ async function GPT3request(prompt, userID, answerLength, mod, temp){
         });
     if (!res.ok){ console.log('Fetch error: ', res.status);}
     let GPT3response = res["data"][0]["GPT3response"];
+    let identity = res["data"][1]["allowed"];
+    if (identity.length > 1){
+        userName = identity[1];
+    }
     console.log('response', GPT3response);
     return GPT3response;
 }

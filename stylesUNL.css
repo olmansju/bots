@@ -24,7 +24,7 @@ div{
 svg#facebox { max-width: 10em; width: 24vmin }
 
 [x] {
-    fill: #f5f1e7;
+    fill: yellow;
     stroke: currentcolor;
     cursor: pointer
 }
