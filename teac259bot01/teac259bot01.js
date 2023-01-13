@@ -1,6 +1,6 @@
 const botName = "TA-259-Bot05";
-let userName = "User";
-let prompt = `Summary: This is a chat between ${userName}, a student in TEAC 259, and a helpful but terse TA named Botty-TA-259\n\n###\n\n${userName}: `;
+let userName = "Student";
+let prompt = `Summary: This is a chat between ${userName}, a student in TEAC 259, and a pithy but kind TA named Botty-TA-259\n\n###\n\n${userName}: `;
 
 async function chatSummary(userID){
     let mod = "text-curie-001";
