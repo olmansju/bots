@@ -47,14 +47,18 @@ svg#facebox { max-width: 10em; width: 24vmin }
     background-color: #e8bc33;
 }
 
-
-
 /*  chat interface  */
+div#sideBySideParent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 5px;
+}
 
 div#textInputDiv{
     background-image: linear-gradient(
             0deg,
-            darkgreen,
+            #111212,
 
             lightgreen
     );

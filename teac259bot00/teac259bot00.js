@@ -19,7 +19,7 @@ async function chatSummary(userID){
 async function botResponse(responseText, userID){
     processLog("botResponse", `passed data:: ${responseText}`);
     let preppedPrompt = prepPrompt(prompt, transcriptArray);
-    let model = "curie:ft-ilt-tlte-cehs-unl-2023-01-06-21-01-08";
+    let model = "text-curie-001";
     let temp = 0.6;
     callGPT3botUI(preppedPrompt, userID, model, temp);
 }

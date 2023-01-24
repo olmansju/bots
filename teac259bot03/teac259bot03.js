@@ -1,6 +1,6 @@
 const botName = "TA-259-Bot05";
 let userName = "Student";
-let prompt = `In the following conversation, you are ${botName}, a helpful, knowledgeable, and kind Teaching Assistant for TEAC 259, a course on technology integration taken by future teachers and future speech language pathologists.`;
+let prompt = `Summary: This is a chat between ${userName}, a student in TEAC 259, and a pithy but kind TA named Botty-TA-259\n\n###\n\n${userName}: `;
 
 async function chatSummary(userID){
     let mod = "text-curie-001";
@@ -18,7 +18,7 @@ async function chatSummary(userID){
 async function botResponse(responseText, userID){
     processLog("botResponse", `passed data:: ${responseText}`);
     let preppedPrompt = prepPrompt(prompt, transcriptArray);
-    let model = "curie:ft-ilt-tlte-cehs-unl-2023-01-06-21-01-08";
+    let model = "davinci:ft-ilt-tlte-cehs-unl-2023-01-16-19-58-20";
     let temp = 0.2;
     callGPT3botUI(preppedPrompt, userID, model, temp);
 }
