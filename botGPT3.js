@@ -48,6 +48,11 @@ async function GPT3request(prompt, userID, answerLength, mod, temp){
     let identity = res["data"][1]["allowed"];
     if (identity.length > 1){
         userName = identity[1];
+        if (typeof loggedInStatus !== 'undefined') {
+            if (loggedInStatus != 1) {
+                saveToLocalStorage(identity);
+            }
+        }
     }
     console.log('response', GPT3response);
     return GPT3response;
