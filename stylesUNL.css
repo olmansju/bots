@@ -5,6 +5,14 @@ body {
     color: #f5f1e7;
 }
 
+.loggingClass{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    padding: 2px;
+}
+
 /* for overall layout*/
 #grid {
     display: grid;

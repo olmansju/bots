@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bot06</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>TEAC259bot04</title>
+    <link rel="stylesheet" href="../stylesUNL.css">
     <script lang="" defer src="../transcript.js"></script>
-    <script lang="" defer src="../loginLogoutLocalStorage.js"></script>
     <script lang="" defer src="../processing.js"></script>
-    <script lang="" defer src="bot06.js"></script>
+    <script lang="" defer src="../loginLogoutLocalStorage.js"></script>
+    <script lang="" defer src="teac259bot04.js"></script>
     <script lang="" defer src="../botGPT3.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
@@ -30,14 +30,14 @@
         <div id="fullPrompt" class="scrollClass"></div>
     </div>
 
-    <div id="topMiddle">Bot06: a co-advisor<br>
+    <div id="topMiddle">Botty-TA-259: a TA bot<br>
         <svg viewBox="-25 -25 50 50" id="facebox">
             <circle x="-20"  r="20"></circle>
             <ellipse id="eye" cx="6" cy="-5" rx="3" ry="2" fill=white stroke=black></ellipse>
             <ellipse id="pupil" cx="6" cy="-5" rx="1.2" ry="1.2" fill=black stroke=white> </ellipse>
             <ellipse id="eye2" cx="-6" cy="-5" rx="3" ry="2" fill=white stroke=black></ellipse>
             <ellipse id="pupil2" cx="-6" cy="-5" rx="1.2" ry="1.2" fill=black stroke=white> </ellipse>
-            <ellipse id="mouth" cx="0" cy="7" rx="6" ry="3" fill=lightgreen stroke=darkgreen ></ellipse>
+            <ellipse id="mouth" cx="0" cy="7" rx="6" ry="3" fill=#c7c8ca stroke=darkgreen ></ellipse>
         </svg>
     </div>
 
@@ -53,11 +53,10 @@
         <div id="textInputDiv">
             <p id="transcript">
             </p>
-
-                <div id="sideBySideParent"><input type="text" id="chatInput" name="chatInput" style="width: 78%;" onfocus="this.value=''" />
-                    <input type="button" id='buttonChat' class="buttonChat" value="Chat Button" />
-                </div>
-        </div>
+            <div id="sideBySideParent">
+            <input type="text" id="chatInput" name="chatInput" onfocus="this.value=''" />
+                <input type="button" id='buttonChat' class="buttonChat" value="Chat Button" />
+            </div></div>
     </div>
 
     <div id="middleRight">Array
@@ -68,9 +67,7 @@
     <div id="bottomLeft">Bottom Left
 
     </div>
-    <div id="bottomMiddle">
-
-    </div>
+    <div id="bottomMiddle">  </div>
     <div id="bottomRight">Processing <br>
         <div id="fullProcessing" class="scrollClass"></div>
     </div>

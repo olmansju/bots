@@ -2,6 +2,8 @@ let loggedInStatus;
 
 document.getElementById("logIn").addEventListener("click", checkIdOnServer);
 document.getElementById("logOut").addEventListener("click", deleteFromLocalStorage);
+document.getElementById("needToLogInMessage").style.fontSize = ".8em";
+document.getElementById("loggedInMessage").style.fontSize = ".8em";
 
 async function checkIdOnServer(){
     let res;
@@ -54,13 +56,13 @@ function checkLocalStorage(){
     if (person != null) {
         console.log("person object found");
         let personObject = JSON.parse(person);
-        let fName = personObject.fName;
+        userName = personObject.fName;
         let lName = personObject.lname;
         let NUID = personObject.NUID;
         document.getElementById("univID").value = NUID;
         loggedInStatus = 1;
         setLogInLogOut(loggedInStatus);
-        document.getElementById('loggedInMessage').innerText = `Hi ${fName}!`;
+        document.getElementById('loggedInMessage').innerText = `Hi ${userName}!`;
     } else {
         loggedInStatus = 0;
         setLogInLogOut(loggedInStatus);
