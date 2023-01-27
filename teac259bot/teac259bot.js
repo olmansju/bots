@@ -1,6 +1,9 @@
 const botName = "TA-259-Bot05";
 let userName = "Student";
 let prompt = `Summary: This is a chat between ${userName}, a student in TEAC 259, and a pithy but kind TA named Botty-TA-259\n\n###\n\n${userName}: `;
+let mod = "davinci:ft-ilt-tlte-cehs-unl-2023-01-16-19-58-20";
+let temp = 0.2;
+let version = "Botty-TA-05";
 
 async function chatSummary(userID){
     let mod = "text-curie-001";
@@ -11,16 +14,16 @@ async function chatSummary(userID){
     let responseModel = `1. What is the main topic?\n2. What advice did ${botName} give to ${userName}?\n3. What would be a one sentence summary of the interaction?\n4. What is the sentiment of the conversation?\n5. What is a shorthand of the conversation?\n6. What is a 10 word summary of the conversation?`;
     let promptEnd = "#Answers#\n1.";
     let promptForSummary = `${promptCommand}\n\n${chatlog}\n\n${responseModel}\n\n${promptEnd}`;
-    let summaryGiven = await GPT3request(promptForSummary, userID, answerLength, mod, temp);
+    let summaryGiven = await GPT3request(promptForSummary, userID, answerLength, mod, temp, version);
     document.getElementById("summary").innerText = `1. ${summaryGiven}`;
 }
 
 async function botResponse(responseText, userID){
     processLog("botResponse", `passed data:: ${responseText}`);
     let preppedPrompt = prepPrompt(prompt, transcriptArray);
-    let model = "davinci:ft-ilt-tlte-cehs-unl-2023-01-16-19-58-20";
-    let temp = 0.2;
-    callGPT3botUI(preppedPrompt, userID, model, temp);
+    let model = mod;
+    let temperature = temp;
+    callGPT3botUI(preppedPrompt, userID, model, temp, version);
 }
 
 function prepPrompt(prompt, arrayOfTransaction){

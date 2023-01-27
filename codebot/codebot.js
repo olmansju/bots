@@ -1,8 +1,9 @@
-let codeBotName = "CodeBot03";
+let codeBotName = "CodeBot04";
 let userName = "user";
 const transcriptArray = [];
 let mod = "code-davinci-002";
 let temp = 0;
+let version = "codeBot04";
 
 document.getElementById("buttonInput").addEventListener("click", getResponse);
 
@@ -20,7 +21,7 @@ function getResponse() {
         let preppedPrompt = prepPrompt(programmingLanguage, CSlevel, requestTheme, trimmedcodeInput);
         transcriptArray.push([userName, preppedPrompt]);
         formatPrompt(preppedPrompt, "prompt");
-        botResponse(preppedPrompt, programmingLanguage, univID, answerLength);
+        botResponse(preppedPrompt, programmingLanguage, univID, answerLength, version);
         let codeHighlight = formatResponse(trimmedcodeInput, programmingLanguage);
         document.getElementById("codeInput").innerHTML = codeHighlight;
         hljs.highlightAll();
@@ -73,6 +74,6 @@ function formatResponse(response, lang){
     return formatted;
 }
 
-async function botResponse(prompt, lang, userID, answerLeng){
-    callGPT3codeUI(prompt, lang, userID, answerLeng);
+async function botResponse(prompt, lang, userID, answerLeng, version){
+    callGPT3codeUI(prompt, lang, userID, answerLeng, version);
 }

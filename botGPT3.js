@@ -1,7 +1,7 @@
 
-async function callGPT3botUI(userResponseText, userID, mod = "text-davinci-003", temp = 1){
+async function callGPT3botUI(userResponseText, userID, mod = "text-davinci-003", temp = 1, botVersion = 'unknown'){
     console.log('calling callGPT3botUI function...');
-    let responseGiven = await GPT3request(userResponseText, userID, '100', mod, temp);
+    let responseGiven = await GPT3request(userResponseText, userID, '100', mod, temp, botVersion);
     let strippedResponse = responseGiven.trim().replace(`${botName}:`, '').replace(/\n/g,' ');
     transcriptArray.push([botName, strippedResponse]);
     console.log('bot response: ', responseGiven);
@@ -14,9 +14,9 @@ async function callGPT3botUI(userResponseText, userID, mod = "text-davinci-003",
     processLog("callGPT3", `generated response:: ${strippedResponse}`);
 }
 
-async function callGPT3codeUI(prompt, lang, userID, answerLength, mod = "code-davinci-002", temp = 0){
+async function callGPT3codeUI(prompt, lang, userID, answerLength, mod = "code-davinci-002", temp = 0, botVersion = 'unknown'){
     console.log('calling callGPT3codeUI function...');
-    let responseGiven = await GPT3request(prompt, userID, answerLength, mod, temp);
+    let responseGiven = await GPT3request(prompt, userID, answerLength, mod, temp, botVersion);
     waiting('lightgreen');
     console.log("responseReceived", responseGiven);
     transcriptArray.push([codeBotName, responseGiven]);
@@ -35,7 +35,7 @@ async function GPT3request(prompt, userID, answerLength, mod, temp, botVersion){
         ansLength: answerLength,
         univID: userID,
         model: mod,
-        version: bot
+        version: botVersion
     })
         .then(function (response) {
             res = response;

@@ -1,6 +1,9 @@
 const botName = "Bot06";
 let userName = "User";
 let prompt = `In the following conversation, you are ${botName}, a helpful, creative, and kind phd advisor.`;
+let mod = "text-davinci-003";
+let temp = 1;
+let version = "advisingBot06";
 
 async function chatSummary(userID){
     let mod = "text-curie-001";
@@ -11,14 +14,14 @@ async function chatSummary(userID){
     let responseModel = `1. What is the main topic?\n2. What advice did ${botName} give to ${userName}?\n3. What would be a one sentence summary of the interaction?\n4. What is the sentiment of the conversation?\n5. What is a shorthand of the conversation?\n6. What is a 10 word summary of the conversation?`;
     let promptEnd = "#Answers#\n1.";
     let promptForSummary = `${promptCommand}\n\n${chatlog}\n\n${responseModel}\n\n${promptEnd}`;
-    let summaryGiven = await GPT3request(promptForSummary, userID, answerLength, mod, temp);
+    let summaryGiven = await GPT3request(promptForSummary, userID, answerLength, mod, temp, version);
     document.getElementById("summary").innerText = `1. ${summaryGiven}`;
 }
 
 async function botResponse(responseText, userID){
     processLog("botResponse", `passed data:: ${responseText}`);
     let preppedPrompt = prepPrompt(prompt, transcriptArray);
-    callGPT3botUI(preppedPrompt, userID);
+    callGPT3botUI(preppedPrompt, userID, mod, temp, version);
 }
 
 function prepPrompt(prompt, arrayOfTransaction){
