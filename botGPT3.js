@@ -26,7 +26,7 @@ async function callGPT3codeUI(prompt, lang, userID, answerLength, mod = "code-da
     hljs.highlightAll();
 }
 
-async function GPT3request(prompt, userID, answerLength, mod, temp){
+async function GPT3request(prompt, userID, answerLength, mod, temp, botVersion){
     let res;
     console.log('calling Express /GPT3post', 'prompt is:', prompt);
     await axios.post('/GPT3post', {
@@ -34,7 +34,8 @@ async function GPT3request(prompt, userID, answerLength, mod, temp){
         temperature: temp,
         ansLength: answerLength,
         univID: userID,
-        model: mod
+        model: mod,
+        version: bot
     })
         .then(function (response) {
             res = response;
