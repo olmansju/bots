@@ -17,7 +17,7 @@ async function callGPT3botUI(userResponseText, userID, mod = "text-davinci-003",
 async function callGPT3codeUI(prompt, lang, userID, answerLength, mod = "code-davinci-002", temp = 0, botVersion = 'unknown'){
     console.log('calling callGPT3codeUI function...');
     let responseGiven = await GPT3request(prompt, userID, answerLength, mod, temp, botVersion);
-    waiting('lightgreen');
+    waiting('#E8F5F5');
     console.log("responseReceived", responseGiven);
     transcriptArray.push([codeBotName, responseGiven]);
     document.getElementById("codeInput").disabled = false;

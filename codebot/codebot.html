@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Leonarda</title>
+    <title>Lenna</title>
     <link rel="stylesheet" href="../stylescodebot.css">
     <link class="codestyle" rel="prefetch alternate stylesheet" href="../agate.css">
     <script lang="" defer src="codebot.js"></script>
@@ -16,7 +16,9 @@
 </head>
 
 <body>
-<span id="title">Leonarda: an interface for Creative Coding v0.07</span><br>
+<div id="ambientProcessing7plus" class="ambientProcessingClass">
+    <span id="title">Lenna: a Creative Coding bot v0.07</span>
+</div>
 <div id="logInDiv" >
     <span id="needToLogInMessage" class="notLoggedIn"></span>
     <input type="text" id="univID" name="univID" class="notLoggedIn" placeholder="NUID" minlength="8" required />
@@ -78,19 +80,21 @@
         </div>
     </div>
 
-    <div id="middle">
-        <div id="ambientProcessing7plus" class="ambientProcessingClass"></div><br><br><br><br>
+    <div id="middle"><br>
+        <br><br><br>
         <div id="middleInput">2. Type your question or paste your code...
             <div id="codeInputDiv" class="codeInputClass">
                 <label for="codeInput"></label>
                 <textarea id="codeInput" name="codeInput" class="codeInputClass" rows="15" cols="50"></textarea>
                 <input type="button" id='buttonInput' class="buttonInput" value="Ask..." />
+                <input type="button" id='buttonInputRefresh' class="buttonInput" value="Refresh" />
+
             </div>
         </div> <br><br>
         <div id="middleRight">Response
-            <div id="fullResponse" class="scrollClass"></div>
+            <div id="fullResponse"></div>
         </div> <br><br>
-        <div id="prompt" class="scrollClass"></div>
+        Prompt  <div id="prompt"></div>
     </div>
     <div id="right"><br><br><br> Extras
     <br><br>

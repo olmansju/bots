@@ -1,16 +1,17 @@
-let codeBotName = "CodeBot07";
+let codeBotName = "Lenna07";
 let userName = "user";
 const transcriptArray = [];
 let mod = "code-davinci-002";
-let temp = 0;
+let temp = 0.2;
 let version = "codeBot07";
 let programmingLanguage;
 
 document.getElementById("buttonInput").addEventListener("click", getResponse);
+document.getElementById("buttonInputRefresh").addEventListener("click", getResponse);
 
 function getResponse() {
     console.log('Send Button Pressed...');
-    waiting('orange');
+    waiting('#FFEBCD');
     console.log('language select value:', document.getElementById("language").value);
     if (document.getElementById("language").value == null){
         programmingLanguage = 'in general';
