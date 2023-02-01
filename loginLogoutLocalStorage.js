@@ -40,7 +40,7 @@ function saveToLocalStorage(personArray){
     loggedInStatus = 1;
     setLogInLogOut(loggedInStatus);
     console.log('saved to local storage...');
-    document.getElementById('loggedInMessage').innerText = "you are logged in";
+    document.getElementById('loggedInMessage').innerText = " ";
 }
 
 function deleteFromLocalStorage(){
@@ -62,11 +62,12 @@ function checkLocalStorage(){
         document.getElementById("univID").value = NUID;
         loggedInStatus = 1;
         setLogInLogOut(loggedInStatus);
-        document.getElementById('loggedInMessage').innerText = `Hi ${userName}!`;
+        document.getElementById('loggedInMessage').innerText = ` `;
+        document.getElementById('logOut').textContent = `${userName} logout`;
     } else {
         loggedInStatus = 0;
         setLogInLogOut(loggedInStatus);
-        document.getElementById('needToLogInMessage').innerText = `Hi, log in so we can chat!`;
+        document.getElementById('needToLogInMessage').innerText = `0. Log in... `;
     }
 }
 

@@ -2,6 +2,12 @@
 
 body {
     font-family: Helvetica, Arial, sans-serif;
+    background-color: #E8F5F5;
+}
+
+span#title {
+    text-align: center;
+    width: 100%;
 }
 
 .loggingClass{
@@ -13,6 +19,13 @@ body {
 }
 
 /* for overall layout*/
+#gridVers07plus {
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    column-gap: 5px;
+    text-align: left;
+}
+
 #grid {
     display: grid;
     grid-template-columns: 45% 3% 45%;
@@ -22,7 +35,6 @@ body {
 
 div{
     padding: 0;
-    text-align:center;
 }
 
 /* CSS for the face */

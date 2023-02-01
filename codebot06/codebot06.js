@@ -1,22 +1,16 @@
-let codeBotName = "CodeBot07";
+let codeBotName = "CodeBot06";
 let userName = "user";
 const transcriptArray = [];
 let mod = "code-davinci-002";
 let temp = 0;
-let version = "codeBot07";
-let programmingLanguage;
+let version = "codeBot06";
 
 document.getElementById("buttonInput").addEventListener("click", getResponse);
 
 function getResponse() {
     console.log('Send Button Pressed...');
     waiting('orange');
-    console.log('language select value:', document.getElementById("language").value);
-    if (document.getElementById("language").value == null){
-        programmingLanguage = 'in general';
-    } else {
-        programmingLanguage = document.getElementById("language").value;
-    }
+    let programmingLanguage = document.getElementById("language").value;
     let CSlevel = document.getElementById("csFamiliarity").value;
     let answerLength = document.getElementById("answerLength").value;
     let requestTheme = document.getElementById("request").value;
@@ -45,10 +39,9 @@ function prepPrompt(lang, level, theme, codeInput){
         'Swift': '///',
         'SQL': '--',
         'Shell': '#',
-        'in general': '#'
+        'In general': '#'
     };
     let commentChar = commentOptions[lang];
-    console.log('commentChar is:', commentChar);
     const queryOptions = {
         'ideationRequest': `${commentChar} ${lang}\n ${commentChar} Help me brainstorm ideas for my  project, so far I'm thinking that ${codeInput}\n Idea #01: \n\n`,
         'researchRequest': `${commentChar} ${lang}\n ${commentChar} Let's do some research, what do you know about ${codeInput}?\n\n`,

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cody</title>
+    <link rel="stylesheet" href="../stylescodebot.css">
+    <link class="codestyle" rel="prefetch alternate stylesheet" href="../agate.css">
+    <script lang="" defer src="codebot06.js"></script>
+    <script lang="" defer src="../loginLogoutLocalStorage.js"></script>
+    <script lang="" defer src="../botGPT3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+
+<div id="logInDiv" class="loggingClass">
+    <span id="needToLogInMessage" class="notLoggedIn"></span>
+    <input type="text" id="univID" name="univID" class="notLoggedIn" placeholder="NUID" minlength="8" required />
+    <button id="logIn" class="notLoggedIn" > log in </button>
+    <span id="logStatus" class="notLoggedIn"></span>
+</div>
+<div id="logOutDiv" class="loggingClass">
+    <span id="loggedInMessage" class="loggedIn"></span>
+    <button id="logOut" class="loggedIn"> log out </button>
+</div>
+
+<div id="grid">
+    <div id="topLeft">Select Request Context <br>
+        <br>
+        <div id="inputOptions" class="inputClass">
+            <label for="language">Select Programming Language:</label>
+            <select id="language" name="language">
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="TypeScript">TypeScript</option>
+                <option value="Perl">Perl</option>
+                <option value="PHP">PHP</option>
+                <option value="Ruby">Ruby</option>
+                <option value="Swift">Swift</option>
+                <option value="SQL">SQL</option>
+                <option value="Shell">Shell</option>
+                <option value="in general">In general...</option>
+            </select>
+            <br><br>
+            <label for="csFamiliarity">Familiarity with Programming / Computer Science:</label>
+            <select id="csFamiliarity" name="csFamiliarity">
+                <option value="I am a beginner">Beginner: little to no coding knowledge</option>
+                <option value="I have some experience">Advanced Beginner: 2-12 months experience</option>
+                <option value="know what I am doing">Intermediate: Average Software Developer</option>
+                <option value="I am an expert">Advanced: Team Lead Developer</option>
+                <option value="I am a genius">Expert: Leads Multiple Team Leaders</option>
+            </select>
+            <br><br>
+            <label for="answerLength">Answer Length: (start small and adjust and rerun if needed)</label>
+            <select id="answerLength" name="answerLength">
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="500">500</option>
+                <option value="800">800</option>
+                <option value="1300">1300</option>
+            </select>
+            <br><br>
+                <label for="request">Select your interaction type:</label>
+                <select id="request" name="request">
+                    <option value="ideationRequest">Help me brainstorm ideas for my project so far I'm thinking that...</option>
+                    <option value="researchRequest">Let's do some research, what do you know about...</option>
+                    <option value="planningRequest">Help me come up with a plan for my project my goals are to...</option>
+                    <option value="csConceptRequest">Help me understand the CS concept of...</option>
+                    <option value="ccReflectionRequest">Help me reflect on the creative coding process, I want to...</option>
+                    <option value="codeRequest">Write a function that...</option>
+                    <option value="dataRequest">Generate data that...</option>
+                    <option value="databaseRequest">Create a Database query that...</option>
+                    <option value="explainCodeRequest">What does this code do?</option>
+                    <option value="debugRequest">Debug this code...</option>
+                    <option value="codeImprovementRequest">Improve this code...</option>
+                    <option value="codeTransformationToPython">Turn this (selected language from dropdown) into python...</option>
+                </select>
+                <br><br>
+
+        </div>
+    </div>
+
+    <div id="topMiddle" class="ambientProcessingClass">
+        <div id="ambientProcessing"></div>
+    </div>
+
+    <div id="topRight">Cody a Creative Coding bot v0.06: <br>
+        <svg viewBox="-25 -25 50 50" id="facebox">
+            <circle x="-20"  r="20"></circle>
+            <ellipse id="eye" cx="6" cy="-5" rx="3" ry="2" fill=white stroke=black></ellipse>
+            <ellipse id="pupil" cx="6" cy="-5" rx="1.2" ry="1.2" fill=black stroke=white> </ellipse>
+            <ellipse id="eye2" cx="-6" cy="-5" rx="3" ry="2" fill=white stroke=black></ellipse>
+            <ellipse id="pupil2" cx="-6" cy="-5" rx="1.2" ry="1.2" fill=black stroke=white> </ellipse>
+            <ellipse id="mouth" cx="0" cy="7" rx="6" ry="3" fill=lightgreen stroke=darkgreen ></ellipse>
+        </svg>
+    </div>
+
+    <div id="middleLeft">Paste your code or question here:
+        <div id="codeInputDiv" class="codeInputClass">
+            <label for="codeInput"></label>
+            <textarea id="codeInput" name="codeInput" class="codeInputClass" rows="15" cols="50"></textarea>
+            <input type="button" id='buttonInput' class="buttonInput" value="Send Button" />
+        </div>
+    </div>
+
+    <div id="middleMiddle" class="ambientProcessingClass">
+    </div>
+
+    <div id="middleRight">Response
+        <div id="fullResponse" class="scrollClass"></div>
+    </div>
+
+    <div id="bottomLeft">Prompt
+        <div id="prompt" class="scrollClass"></div>
+    </div>
+    <div id="bottomMiddle" class="ambientProcessingClass"></div>
+    <div id="bottomRight"></div>
+</div>
+
+</body>
+</html>

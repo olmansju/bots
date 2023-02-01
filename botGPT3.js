@@ -60,8 +60,19 @@ async function GPT3request(prompt, userID, answerLength, mod, temp, botVersion){
 }
 
 function waiting(DIVcolor){
-    document.getElementById('topMiddle').style.backgroundColor = DIVcolor;
-    document.getElementById('middleMiddle').style.backgroundColor = DIVcolor;
-    document.getElementById('bottomMiddle').style.backgroundColor = DIVcolor;
-    document.getElementById("mouth").style.fill = DIVcolor;
+    if (document.getElementById("topMiddle")) {
+        document.getElementById('topMiddle').style.backgroundColor = DIVcolor;
+    }
+    if (document.getElementById("middleMiddle")) {
+        document.getElementById('middleMiddle').style.backgroundColor = DIVcolor;
+    }
+    if (document.getElementById("bottomMiddle")) {
+        document.getElementById('bottomMiddle').style.backgroundColor = DIVcolor;
+    }
+    if (document.getElementById("mouth")) {
+        document.getElementById("mouth").style.fill = DIVcolor;
+    }
+    if (document.getElementById("ambientProcessing7plus")) {
+        document.getElementById('ambientProcessing7plus').style.backgroundColor = DIVcolor;
+    }
 }
