@@ -34,10 +34,17 @@ function questionTypeFormChanging(){
         case "explainCodeRequest":
         case "debugRequest":
         case "codeImprovementRequest":
-        case "codeTransformationToPython":
             setFormOptions(questionTypeSelected);
             languageSelectDiv.style.display = 'block';
             languageInputSelect.value = "Python";
+            familiaritySelectDiv.style.display = 'block';
+            csFamiliarity.value = "I have some experience";
+            break;
+
+        case "codeTransformationToPython":
+            setFormOptions(questionTypeSelected);
+            languageSelectDiv.style.display = 'block';
+            languageInputSelect.value = "JavaScript";
             familiaritySelectDiv.style.display = 'block';
             csFamiliarity.value = "I have some experience";
             break;
@@ -49,6 +56,8 @@ function questionTypeFormChanging(){
             familiaritySelectDiv.style.display = 'none';
             csFamiliarity.value = "I have some experience";
     }
+    document.getElementById("codeInput").value = "";
+    dynamicPrompt();
 }
 
 function setFormOptions(mode){

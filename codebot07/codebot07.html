@@ -2,24 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lenna v0.9</title>
+    <title>Lenna</title>
     <link rel="stylesheet" href="../stylescodebot.css">
     <link class="codestyle" rel="prefetch alternate stylesheet" href="../agate.css">
-    <script lang="" defer src="codebot.js"></script>
+    <script lang="" defer src="codebot07.js"></script>
     <script lang="" defer src="../codebotDynamicForm.js"></script>
     <script lang="" defer src="../loginLogoutLocalStorage.js"></script>
     <script lang="" defer src="../codebotDynamicForm.js"></script>
-    <script lang="" defer src="../transcriptCodebot.js"></script>
     <script lang="" defer src="../botGPT3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.js"></script>
 
 </head>
 
 <body>
 <div id="ambientProcessing7plus" class="ambientProcessingClass">
-    <span id="title">Lenna: a Creative Coding bot</span> v0.09
+    <span id="title">Lenna: a Creative Coding bot v0.07</span>
 </div>
 <div id="logInDiv" >
     <span id="needToLogInMessage" class="notLoggedIn"></span>
@@ -38,18 +36,18 @@
         <div id="inputOptions" class="inputClass">
             <select id="request" name="request" required>
                 <option value ="" disabled selected>1.a Select your interaction style</option>
-                <option value="ideationRequest">Brainstorming</option>
-                <option value="researchRequest">Research</option>
-                <option value="planningRequest">Planning</option>
-                <option value="csConceptRequest">CS Concepts: help me understand...</option>
+                <option value="ideationRequest">Brainstorming: for my project I'm thinking that...</option>
+                <option value="researchRequest">Research: what do you know about...</option>
+                <option value="planningRequest">Planning: I need a plan, my goals are to...</option>
+                <option value="csConceptRequest">CS Concepts: help me understand the concept of...</option>
+                <option value="ccReflectionRequest">Reflection: I need to reflect on my process, I want to...</option>
                 <option value="codeRequest">Coding: write a function that...</option>
                 <option value="explainCodeRequest">Coding: what does this code do?</option>
                 <option value="debugRequest">Coding: debug this code...</option>
                 <option value="codeImprovementRequest">Coding: improve this code...</option>
-                <option value="codeTransformationToPython">Coding: turn this code into python...</option>
-                <option value="dataRequest">Coding: generate some data...</option>
-                <option value="databaseRequest">Coding: database query...</option>
-                <option value="ccReflectionRequest">Reflection</option>
+                <option value="codeTransformationToPython">Coding: turn this (selected language from dropdown) into python...</option>
+                <option value="dataRequest">Data: generate data that...</option>
+                <option value="databaseRequest">Database: create a query that...</option>
             </select>
             <br><br>
             <div id="languageSelectDiv">
@@ -77,8 +75,8 @@
                 <option value="I am an expert">I'm a professional developer</option>
                 <option value="I am a genius">I'm a coding genius</option>
             </select> <br>
-            </div><br>
-            Prompt: <div id="prompt"></div>
+            </div>
+
         </div>
     </div>
 
@@ -96,17 +94,10 @@
         <div id="middleRight">Response
             <div id="fullResponse"></div>
         </div> <br><br>
-
-        <br><br>
-        Full Transcript<div id="fullChatTranscript"></div>
+        Prompt  <div id="prompt"></div>
     </div>
-    <div id="right"><br><br><br> <b>Extras</b>
+    <div id="right"><br><br><br> Extras
     <br><br>
-        <input type="button" id="copyButton" name="copyButton" value="Copy Transcript" />
-        <br><span id="messageCopied"></span><br>
-        Save Transcript
-        <input type="button" id="saveToLocalFileButton" name="saveToLocalFileButton" value="Save Transcript" />
-        <br><span id="messageSaved"></span><br>
     <label for="answerLength">Answer Length:</label>
     <select id="answerLength" name="answerLength">
         <option value="100">100</option>
@@ -117,6 +108,5 @@
         <option value="1300">1300</option>
     </select></div>
     </div>
-
 </body>
 </html>

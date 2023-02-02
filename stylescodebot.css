@@ -6,8 +6,8 @@ body {
 }
 
 span#title {
-    text-align: center;
-    width: 100%;
+    color: #3F2B56;
+    font-size: 1.4em;
 }
 
 .loggingClass{
@@ -69,23 +69,14 @@ svg#facebox { max-width: 10em; width: 24vmin }
 
 div#fullResponse {
     text-align: left;
+    font-size: 1.2em;
+}
+
+div#prompt {
+    color: #838383;
 }
 
 /*  chat interface  */
-
-div#textInputDiv{
-    background-image: linear-gradient(
-            0deg,
-            #111212,
-
-            lightgreen
-    );
-    border-radius: 25px;
-
-    color:black;
-    align:left;
-    padding:1%;
-}
 
 .buttonInput {
     background-color: #4CAF50;

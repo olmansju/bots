@@ -1,18 +1,17 @@
-let codeBotName = "Lenna09";
+let codeBotName = "Lenna08";
 let userName = "user";
 const transcriptArray = [];
 let mod = "code-davinci-002";
 let temp = 0.2;
-let version = "codeBot09";
+let version = "codeBot08";
 let programmingLanguage;
 
 document.getElementById("buttonInput").addEventListener("click", getResponse);
 document.getElementById("buttonInputRefresh").addEventListener("click", getResponse);
-document.getElementById("codeInput").addEventListener("keyup", dynamicPrompt);
 
 function getResponse() {
     console.log('Send Button Pressed...');
-    waiting('#ffffba');
+    waiting('#FFEBCD');
     console.log('language select value:', document.getElementById("language").value);
     if (document.getElementById("language").value == null){
         programmingLanguage = 'in general';
@@ -33,24 +32,6 @@ function getResponse() {
         let codeHighlight = formatResponse(trimmedcodeInput, programmingLanguage);
         document.getElementById("codeInput").innerHTML = codeHighlight;
         hljs.highlightAll();
-    }
-}
-
-function dynamicPrompt(){
-    if (document.getElementById("language").value == null){
-        programmingLanguage = 'in general';
-    } else {
-        programmingLanguage = document.getElementById("language").value;
-    }
-    let CSlevel = document.getElementById("csFamiliarity").value;
-    let requestTheme = document.getElementById("request").value;
-    let codeInput = document.getElementById("codeInput").value;
-    let trimmedcodeInput = codeInput.trim();
-    let preppedPrompt = prepPrompt(programmingLanguage, CSlevel, requestTheme, trimmedcodeInput);
-    if (preppedPrompt != null){
-        document.getElementById("prompt").innerText = preppedPrompt;
-    } else {
-        document.getElementById("prompt").innerText = "";
     }
 }
 
@@ -107,15 +88,7 @@ function formatPrompt(thePassedPrompt, theElementID){
 }
 
 function formatResponse(response, lang){
-    let formatted;
-    if (lang.includes('in general')){
-        console.log('includes in general', lang);
-        //formatted = `<pre><code class='language-plaintext'> ${response} </code></pre>`;
-        formatted = response;
-    } else {
-        console.log('does not include in general', lang);
-        formatted = `<pre><code class='language-${lang.toLowerCase()}'> ${response} </code></pre>`;
-    }
+    let formatted = `<pre><code class='language-${lang.toLowerCase()}'> ${response} </code></pre>`;
     return formatted;
 }
 

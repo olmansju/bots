@@ -24,6 +24,7 @@ async function callGPT3codeUI(prompt, lang, userID, answerLength, mod = "code-da
     let formattedResponse = formatResponse(responseGiven, lang);
     document.getElementById("fullResponse").innerHTML = formattedResponse;
     hljs.highlightAll();
+    buildFullTranscript();
 }
 
 async function GPT3request(prompt, userID, answerLength, mod, temp, botVersion){
