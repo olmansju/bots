@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shellbot00</title>
+    <link rel="stylesheet" href="../stylescodebot.css">
+</head>
+<body>
+<h3>Shellbot00</h3>
+
+<p id="instructions">instructions here</p>
+
+<input type="text" id="passPhrase" name="passPhrase" placeholder="Enter your passphrase" minlength="8" required />
+<br>
+<textarea id="question" name="question" rows="4" cols="50" placeholder="Type your question here"></textarea>
+<br>
+<input type="button" id='buttonAsk' value="Ask" />
+<br><br>
+<div id="response"></div>
+
+<script lang="" defer src="{{ url_for('static', filename='shellbot00.js') }}"></script>
+<script src="{{ url_for('https://unpkg.com/axios/dist/axios.min.js') }}"></script>
+</body>
+</html>
