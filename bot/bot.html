@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bot06</title>
+    <title>Horatio</title>
     <link rel="stylesheet" href="../styles.css">
+    <script lang="" defer src="bot.js"></script>
+    <script lang="" defer src="../neo4jconnections.js"></script>
     <script lang="" defer src="../transcript.js"></script>
     <script lang="" defer src="../loginLogoutLocalStorage.js"></script>
     <script lang="" defer src="../processing.js"></script>
-    <script lang="" defer src="bot.js"></script>
     <script lang="" defer src="../botGPT3.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
@@ -24,56 +25,32 @@
     <button id="logOut" class="loggedIn"> log out </button>
 </div>
 
-<div id="grid">
-    <div id="topLeft">Prompt sent <br>
-        <br>
-        <div id="fullPrompt" class="scrollClass"></div>
-    </div>
+<div id="gridHoratio">
+    <div id="gridLeft">
+        <div id="topLeft">
+        <span id="titleText"><h2 class="redtext">Horatio an Advising ChatBot</h2>
+            Designed for ILT and TLTE graduate students</span>
+        </div>
 
-    <div id="topMiddle">Bot06: a co-advisor<br>
-        <svg viewBox="-25 -25 50 50" id="facebox">
-            <circle x="-20"  r="20"></circle>
-            <ellipse id="eye" cx="6" cy="-5" rx="3" ry="2" fill=white stroke=black></ellipse>
-            <ellipse id="pupil" cx="6" cy="-5" rx="1.2" ry="1.2" fill=black stroke=white> </ellipse>
-            <ellipse id="eye2" cx="-6" cy="-5" rx="3" ry="2" fill=white stroke=black></ellipse>
-            <ellipse id="pupil2" cx="-6" cy="-5" rx="1.2" ry="1.2" fill=black stroke=white> </ellipse>
-            <ellipse id="mouth" cx="0" cy="7" rx="6" ry="3" fill=lightgreen stroke=darkgreen ></ellipse>
-        </svg>
-    </div>
+        <div id="restLeft">
+            <div id="gridWelcome">
+                <img src="../images/horatio.png" height="62" width="61"/>
+                <span class="chatBubbleBotClass">Hi, I'm Horatio, ask me PhD advising questions!</span></div>
+            <div id="sideBySideParent" class="userResponse">
+                <input type="text" id="userInput" name="userInput" class="chatBubbleUserClass" style="width: 78%;" onfocus="this.value=''" />
+                <button id="askButton" name="askButton">Ask...</button>
+                <img class="reverseIMG" src="../images/student_at_laptop.png" height="42" width="41"/>
+            </div>
 
-    <div id="topRight">Summary
-        <div id="summary" class="scrollClass"></div>
-    </div>
 
-    <div id="middleLeft">Text Transcript
-        <div id="fullTranscript" class="scrollClass"></div>
-    </div>
 
-    <div id="middleMiddle">Chat Interface
-        <div id="textInputDiv">
-            <p id="transcript">
-            </p>
-
-                <div id="sideBySideParent"><input type="text" id="chatInput" name="chatInput" style="width: 78%;" onfocus="this.value=''" />
-                    <input type="button" id='buttonChat' class="buttonChat" value="Chat Button" />
-                </div>
         </div>
     </div>
 
-    <div id="middleRight">Array
-        <div id="fullArray" class="scrollClass"></div>
-
+    <div id="right">Resources <br>
+        <img src="../images/horatio.png" height="242" width="241"/>
     </div>
 
-    <div id="bottomLeft">Bottom Left
-
-    </div>
-    <div id="bottomMiddle">
-
-    </div>
-    <div id="bottomRight">Processing <br>
-        <div id="fullProcessing" class="scrollClass"></div>
-    </div>
 </div>
 
 </body>

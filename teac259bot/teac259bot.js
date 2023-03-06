@@ -3,7 +3,7 @@ let userName = "Student";
 let prompt = `Summary: This is a chat between ${userName}, a student in TEAC 259, and a pithy but kind TA named Botty-TA-259\n\n###\n\n${userName}: `;
 let mod = "davinci:ft-ilt-tlte-cehs-unl-2023-01-16-19-58-20";
 let temp = 0.2;
-let version = "Botty-TA-05";
+let version = "TA-259 0.05";
 
 async function chatSummary(userID){
     let mod = "text-curie-001";

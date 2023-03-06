@@ -41,6 +41,11 @@ function saveToLocalStorage(personArray){
     setLogInLogOut(loggedInStatus);
     console.log('saved to local storage...');
     document.getElementById('loggedInMessage').innerText = " ";
+    try {
+        checkNeo4j(NUID);
+    } catch(err) {
+        console.log('checkNeo4j does not exist', err);
+    }
 }
 
 function deleteFromLocalStorage(){
@@ -48,6 +53,7 @@ function deleteFromLocalStorage(){
     loggedInStatus = 0;
     setLogInLogOut(loggedInStatus);
     document.getElementById('needToLogInMessage').innerText = "you are logged out";
+    userName = "User";
 }
 
 function checkLocalStorage(){
@@ -59,6 +65,11 @@ function checkLocalStorage(){
         userName = personObject.fName;
         let lName = personObject.lname;
         let NUID = personObject.NUID;
+        try {
+            checkNeo4j(NUID);
+        } catch(err) {
+            console.log('checkNeo4j does not exist', err);
+        }
         document.getElementById("univID").value = NUID;
         loggedInStatus = 1;
         setLogInLogOut(loggedInStatus);

@@ -3,7 +3,7 @@ let userName = "user";
 const transcriptArray = [];
 let mod = "code-davinci-002";
 let temp = 0.2;
-let version = "codeBot10";
+let version = "CB 0.10";
 let programmingLanguage;
 
 document.getElementById("buttonInput").addEventListener("click", getResponse);

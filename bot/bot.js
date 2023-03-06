@@ -1,40 +1,43 @@
-const botName = "Bot06";
-let userName = "User";
-let prompt = `In the following conversation, you are ${botName}, a helpful, creative, and kind phd advisor.`;
-let mod = "text-davinci-003";
+const botName = "Horacio";
+let userName = "user";
+let mod = "gpt-3.5-turbo-0301";
 let temp = 1;
-let version = "advisingBot06";
+let version = "AB 0.07";
+const chatArray = [];
 
-async function chatSummary(userID){
-    let mod = "text-curie-001";
-    let temp = 0;
-    let answerLength = "358";
-    let promptCommand = "Summarize this chatlog:";
-    let chatlog = formatArrayIntoModelPrompt(transcriptArray);
-    let responseModel = `1. What is the main topic?\n2. What advice did ${botName} give to ${userName}?\n3. What would be a one sentence summary of the interaction?\n4. What is the sentiment of the conversation?\n5. What is a shorthand of the conversation?\n6. What is a 10 word summary of the conversation?`;
-    let promptEnd = "#Answers#\n1.";
-    let promptForSummary = `${promptCommand}\n\n${chatlog}\n\n${responseModel}\n\n${promptEnd}`;
-    let summaryGiven = await GPT3request(promptForSummary, userID, answerLength, mod, temp, version);
-    document.getElementById("summary").innerText = `1. ${summaryGiven}`;
+document.getElementById("askButton").addEventListener("click", startResponse);
+let textInputReady = document.getElementById("userInput");
+textInputReady.addEventListener("keydown", function (ee) {
+    if (ee.key === "Enter"){
+        startResponse();
+        console.log("Enter pressed in chat")
+    }
+});
+
+function startResponse() {
+    if (chatArray.length < 1){
+        let prompt = `You are ${botName}, a helpful, creative, and kind assistant PhD advisor. You are helping ${userName}. Answer ${userName} as concisely as possible.`;
+        chatArray.push({'role': 'system', 'content': prompt});
+    }
+    let responseText;
+    responseText = document.getElementById("userInput").value;
+    let univID = document.getElementById("univID").value;
+    let trimmedResponseText = responseText.trim();
+    if (trimmedResponseText !== "") {
+        chatArray.push({'role': 'user', 'content': trimmedResponseText});
+        document.getElementById("userInput").value = "";
+        document.getElementById("userInput").disabled = true;
+        botResponse(chatArray, univID);
+    }
 }
 
-async function botResponse(responseText, userID){
-    processLog("botResponse", `passed data:: ${responseText}`);
-    let preppedPrompt = prepPrompt(prompt, transcriptArray);
-    callGPT3botUI(preppedPrompt, userID, mod, temp, version);
+async function botResponse(chArray, userID){
+    let preppedMessageArray = prepMessage(chArray);
+    callGPT35turboBotUI(preppedMessageArray, userID, mod, temp, version);
 }
 
-function prepPrompt(prompt, arrayOfTransaction){
-    let formattedModel = formatArrayIntoModelPrompt(arrayOfTransaction);
-    let theFullPromptAndModel = `${prompt}\n${formattedModel}`;
-    document.getElementById("fullPrompt").innerText = theFullPromptAndModel;
-    return theFullPromptAndModel;
-}
-
-function formatArrayIntoModelPrompt(arrayOfTransaction){
-    let model = "";
-    arrayOfTransaction.forEach(dialoguePair => {
-        model += `\n${dialoguePair[0]}: ${dialoguePair[1]}`;
-    } );
-    return model;
-}
+function prepMessage(cArray){
+    let theMessage = cArray.slice(Math.max(arr.length - 5, 1));
+    theMessage.unshift(cArray[0]);
+    return theMessage;
+    }

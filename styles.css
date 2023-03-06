@@ -1,6 +1,7 @@
 
 body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Plus Jakarta S Helvetica, Arial, Helvetica, sans-serif;
+    background-color: #f6f8f9;
 }
 
 .loggingClass{
@@ -16,6 +17,75 @@ body {
     display: grid;
     grid-template-columns: 33% 34% 33%;
     grid-template-rows: 34% 33% 33%;
+}
+
+/* for Horatio layout*/
+#gridHoratio {
+    display: grid;
+    grid-template-columns: 38% 62%;
+}
+
+#gridLeft {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 80%;
+    height: 100vh;
+}
+
+.redtext{
+    color: #dd1818;
+}
+
+div#topLeft{
+    text-align: left;
+    padding: 5%;
+}
+
+div#restLeft{
+    text-align: left;
+    padding: 5%;
+}
+
+button#askButton{
+    padding: 1px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.userResponse{
+    text-align: right;
+    float: right;
+    width: 70%;
+    padding: 5%;
+}
+
+.reverseIMG{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    padding-left: 4px;
+}
+
+.chatBubbleBotClass{
+    border: 1px solid gray;
+    border-radius: 0px 8px 8px 12px;
+    padding: 2px;
+}
+
+.chatBubbleUserClass{
+    border: 1px solid gray;
+    border-radius: 8px 12px 0px 8px;
+    padding: 2px;
+}
+
+input#userInput {
+    padding-right:8px;
+    text-align: right;
+    margin-top: 10px;
+}
+
+div#right{
+    background-color: #f9f9f9;
 }
 
 div{
@@ -61,7 +131,7 @@ div#sideBySideParent{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    padding: 5px;
+    padding: 15px;
 }
 
 div#textInputDiv{
