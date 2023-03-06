@@ -62,17 +62,18 @@ async function GPT3request(prompt, userID, answerLength, mod, temp, botVersion){
 
 async function callGPT35turboBotUI(messageArray, userID, mod = "gpt-3.5-turbo", temp = 1, botVersion = 'unknown'){
     console.log('calling turboBotUI function...');
-    let responseGiven = await GPT35request(messageArray, userID, '200', mod, temp, botVersion);
-    let textResponse = responseGiven[0];
-    chatArray.push({'role': 'assistant', 'content': textResponse});
-    console.log('bot 3.5 response: ', responseGiven);
+    let responseGiven = await GPT35request(messageArray, userID, '1200', mod, temp, botVersion);
+    console.log('responseGiven is:', responseGiven);
+    buildChatBubble(responseGiven);
+    console.log('bot 3.5 response: ', responseGiven, 'chatArray:', chatArray);
     document.getElementById("userInput").focus();
     document.getElementById("userInput").disabled = false;
+    return responseGiven;
 }
 
 async function GPT35request(mesArray, userID, answerLength, mod, temp, botVersion){
     let res;
-    console.log('calling Express /GPT35post', 'prompt is:', prompt);
+    console.log('calling Express /GPT35post', 'message array is:', mesArray);
     await axios.post('/GPT35post', {
         promptMessageArray: mesArray,
         temperature: temp,
@@ -89,7 +90,7 @@ async function GPT35request(mesArray, userID, answerLength, mod, temp, botVersio
             console.log(error);
         });
     if (!res.ok){ console.log('Fetch error: ', res.status);}
-    let GPT3response = res["data"][0]["GPT3response"];
+    let GPT35response = res["data"][0]["GPT35response"];
     let identity = res["data"][1]["allowed"];
     if (identity.length > 1){
         userName = identity[1];
@@ -99,8 +100,8 @@ async function GPT35request(mesArray, userID, answerLength, mod, temp, botVersio
             }
         }
     }
-    console.log('response', GPT3response);
-    return GPT3response;
+    console.log('response', GPT35response);
+    return GPT35response;
 }
 
 function waiting(DIVcolor){
