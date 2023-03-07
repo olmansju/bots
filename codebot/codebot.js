@@ -1,9 +1,9 @@
-let codeBotName = "Guisseppe10";
+let codeBotName = "Guisseppe11";
 let userName = "user";
 const transcriptArray = [];
-let mod = "code-davinci-002";
+let mod = "gpt-3.5-turbo-0301";
 let temp = 0.2;
-let version = "CB 0.10";
+let version = "CB 0.11";
 let programmingLanguage;
 
 document.getElementById("buttonInput").addEventListener("click", getResponse);
@@ -74,29 +74,31 @@ function prepPrompt(lang, level, theme, codeInput){
         'researchRequest': `${commentChar} ${lang}\n ${commentChar} Let's do some research, what do you know about ${codeInput}?\n\n`,
         'planningRequest': `${commentChar} ${lang}\n ${commentChar} Please help me come up with a plan for my project. My goals are to ${codeInput}.\n\n`,
         'csConceptRequest': `${commentChar} ${lang}\n ${commentChar} Help me understand the concept of ${codeInput}. Explain it to me like ${level}. \n\n`,
+        'errorExplanation': `${commentChar} ${lang}\n ${commentChar} What is the meaning of this error message: ${codeInput}. \n\n ${commentChar} Explain it to me like ${level}.\n\n`,
         'ccReflectionRequest': `${commentChar} Help me reflect on the creative coding process, I want to ${codeInput}\n\n`,
         'codeRequest': `${commentChar} ${lang}\n ${commentChar} Write a function that ${codeInput}\n\n`,
         'dataRequest': `${commentChar} ${lang}\n ${commentChar} Generate data that ${codeInput}\n\n`,
         'databaseRequest': `${commentChar} ${lang}\n ${commentChar} Create a query that ${codeInput}\n\n`,
-        'explainCodeRequest': `${codeInput}\n\n ${commentChar} Explain what the previous code is doing like ${level}.:\n\n It`,
+        'explainCodeRequest': `${codeInput}\n\n ${commentChar} Explain what the previous code is doing. Talk to me like ${level}.:\n\n`,
         'debugRequest': `${codeInput}\n\n ${commentChar} Debug the previous code.\n\n`,
         'codeImprovementRequest': `${codeInput}\n\n ${commentChar} Refactor the previous code.\n\n`,
         'codeTransformationToPython': `${commentChar} Translate this code from ${lang} into Python\n\n ${commentChar} ${lang}\n\n ${codeInput}\n\n # Python`
     };
     let fullPrompt = queryOptions[theme];
     const queryModel = {
-        'codeRequest': "code-davinci-002",
-        'dataRequest': "code-davinci-002",
-        'databaseRequest': "code-davinci-002",
-        'explainCodeRequest': "code-davinci-002",
-        'debugRequest': "code-davinci-002",
-        'codeImprovementRequest': "code-davinci-002",
-        'codeTransformationToPython': "code-davinci-002",
-        'ideationRequest':"text-davinci-003",
-        'researchRequest':"text-davinci-003",
-        'planningRequest':"text-davinci-003",
-        'csConceptRequest':"text-davinci-003",
-        'ccReflectionRequest':"text-davinci-003"
+        'codeRequest': "gpt-3.5-turbo-0301",
+        'dataRequest': "gpt-3.5-turbo-0301",
+        'databaseRequest': "gpt-3.5-turbo-0301",
+        'explainCodeRequest': "gpt-3.5-turbo-0301",
+        'debugRequest': "gpt-3.5-turbo-0301",
+        'errorExplanation': "gpt-3.5-turbo-0301",
+        'codeImprovementRequest': "gpt-3.5-turbo-0301",
+        'codeTransformationToPython': "gpt-3.5-turbo-0301",
+        'ideationRequest':"gpt-3.5-turbo-0301",
+        'researchRequest':"gpt-3.5-turbo-0301",
+        'planningRequest':"gpt-3.5-turbo-0301",
+        'csConceptRequest':"gpt-3.5-turbo-0301",
+        'ccReflectionRequest':"gpt-3.5-turbo-0301"
     };
     mod = queryModel[theme];
     return fullPrompt;
@@ -120,5 +122,5 @@ function formatResponse(response, lang){
 }
 
 async function botResponse(prompt, lang, userID, answerLeng, model, temperature, vers){
-    callGPT3codeUI(prompt, lang, userID, answerLeng, model, temperature, vers);
+    callGPT35codeUI(prompt, lang, userID, answerLeng, model, temperature, vers);
 }
