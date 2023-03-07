@@ -36,7 +36,6 @@ async function GPT35request(mesArray, userID, answerLength, mod, temp, botVersio
         univID: userID,
         model: mod,
         version: botVersion
-        prevID: gpt35turboPreviousChatID
     })
         .then(function (response) {
             res = response;
@@ -48,8 +47,7 @@ async function GPT35request(mesArray, userID, answerLength, mod, temp, botVersio
     if (!res.ok){ console.log('Fetch error: ', res.status);}
     let GPT35response = res["data"][0]["GPT35response"];
     let identity = res["data"][1]["allowed"];
-    gpt35turboPreviousChatID = res["data"][2];
-    console.log('gpt-3.5-turbo id:', gpt35turboPreviousChatID);
+    console.log('gpt-3.5-turbo id:');
     if (identity.length > 1){
         userName = identity[1];
         if (typeof loggedInStatus !== 'undefined') {
