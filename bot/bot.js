@@ -4,7 +4,6 @@ let mod = "gpt-3.5-turbo-0301";
 let temp = 1;
 let version = "AB 0.07";
 const chatArray = [];
-let previousGPT35id;
 
 document.getElementById("askButton").addEventListener("click", startResponse);
 let textInputReady = document.getElementById("userInput");

@@ -1,3 +1,4 @@
+let lastGPT35convoID;
 
 async function callGPT35codeUI(prompt, lang, userID, answerLength, mod = "gpt-3.5-turbo-0301", temp = 0, botVersion = 'unknown'){
     console.log('calling callGPT35codeUI function...');
@@ -47,8 +48,8 @@ async function GPT35request(mesArray, userID, answerLength, mod, temp, botVersio
     if (!res.ok){ console.log('Fetch error: ', res.status);}
     let GPT35response = res["data"][0]["GPT35response"];
     let identity = res["data"][1]["allowed"];
-    gpt35turboPreviousChatID = res["data"][2];
-    console.log('gpt-3.5-turbo conversation id:', gpt35turboPreviousChatID);
+    lastGPT35convoID = res["data"][2];
+    console.log('gpt-3.5-turbo conversation id:', lastGPT35convoID);
     if (identity.length > 1){
         userName = identity[1];
         if (typeof loggedInStatus !== 'undefined') {
