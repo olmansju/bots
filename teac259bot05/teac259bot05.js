@@ -2,7 +2,7 @@ const botName = "Alex";
 let userName = "Student";
 let mod = "gpt-3.5-turbo-0301";
 let temp = 0.2;
-let version = "TA-259 0.06";
+let version = "TA-259 0.05";
 const chatArray = [];
 
 document.getElementById("askButton").addEventListener("click", startResponse);
@@ -14,7 +14,7 @@ textInputReady.addEventListener("keydown", function (ee) {
     }
 });
 
-async function startResponse() {
+function startResponse() {
     if (loggedInStatus != 1){
         document.getElementById('needToLogInMessage').innerText = '-----------------------> You need to log in before we can talk.';
         return;
@@ -28,11 +28,6 @@ async function startResponse() {
     let univID = document.getElementById("univID").value;
     let trimmedResponseText = responseText.trim();
     if (trimmedResponseText !== "") {
-        let textEmbeddingsArray = await embeddingRequest(trimmedResponseText);
-        let topThreePaths = await getCosineSimilarity(textEmbeddingsArray);
-        console.log('top 3 paths', topThreePaths[0].naturalText, topThreePaths[1].naturalText, topThreePaths[2].naturalText);
-        let contentInfo = {'role': 'system', 'content': `use the following information about the course to respond: ${topThreePaths[0].naturalText}`};
-        chatArray.push(contentInfo);
         let userObject = {'role': 'user', 'content': trimmedResponseText};
         chatArray.push(userObject);
         buildChatBubble(userObject);

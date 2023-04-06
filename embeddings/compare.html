@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.js" integrity="sha512-jVMFsAksn8aljb9IJ+3OCAq38dJpquMBjgEuz7Q5Oqu5xenfin/jxdbKw4P5eKjUF4xiG/GPT5CvCX3Io54gyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script lang="" defer src="embeddingObjectArray.js"></script>
+    <script lang="" defer src="compareEmbeddings.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Compare Embeddings</title>
+
+</head>
+<body style="background: #c6b4f0">Compare Query to Embeddings <br><br>
+<div id="totalEmbeddingsDIV"></div><br>
+<div>Test query is:<input type="text" id="testQuery" size="80" /></div>
+<br><br>To Compare:
+<div id="to">
+    <button id="compareEmbeddingsButton">Compare Embeddings</button></div>
+
+<br><br>Result of the comparison process:
+<div id="resultOfComparisonProcess"></div>
+</body>
+</html>

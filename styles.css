@@ -20,7 +20,7 @@ body {
 }
 
 /* for Horatio layout*/
-#gridHoratio {
+#gridHoratio, #gridAlex {
     display: grid;
     grid-template-columns: 38% 62%;
 }

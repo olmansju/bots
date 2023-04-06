@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script lang="" defer src="embeddings.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Embeddings</title>
+
+</head>
+<body style="background: #c6b4f0">Embeddings <br><br>To Embed:
+<div id="to"><textarea id="toEmbed" rows="20" cols="150"></textarea><br>
+    <button id="tokenButton">Calculate tokens</button> <span id="numberOfTokens"></span>
+    <label for="dimensions">Select number of dimensions:</label>
+    <select id="dimensions" name="dimensions">
+        <option value="128">128</option>
+        <option value="256">256</option>
+        <option value="512">512</option>
+        <option value="1024">1024</option>
+        <option value="1536">1536</option>
+    </select>
+    <button id="embedButton">Get Embedding</button></div>
+<br><br>Result:
+<div id="result"></div><br><br>Text-Vector Embeddings Thus Far:
+<div id="thusFar"></div>
+</body>
+</html>

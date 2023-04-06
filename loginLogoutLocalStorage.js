@@ -23,6 +23,7 @@ async function checkIdOnServer(){
     let identity = res["data"][0]["allowed"];
     if (identity.length > 1){
         userName = identity[1];
+        console.log('userName is now:', userName, 'set from server');
         if (typeof loggedInStatus !== 'undefined') {
             if (loggedInStatus != 1) {
                 saveToLocalStorage(identity);
@@ -63,6 +64,7 @@ function checkLocalStorage(){
         console.log("person object found");
         let personObject = JSON.parse(person);
         userName = personObject.fName;
+        console.log('userName is now:', userName, 'set from local storage');
         let lName = personObject.lname;
         let NUID = personObject.NUID;
         try {
