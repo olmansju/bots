@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
     <script lang="" defer src="graph2vector.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Graph DB to Path to Text to Embeddings to Vector DB</title>
@@ -20,7 +21,6 @@
     <option value="Course">Course</option>
 </select>
 <select name="distance" id="distance">
-    <option value="1">1 Relationship</option>
     <option value="2">2 Relationships</option>
     <option value="3">3 Relationships</option>
     <option value="4">4 Relationships</option>
@@ -30,7 +30,20 @@
 <button type="button" id="processButton">process</button>
 </div>
 
-<div id="details"></div>
+<div id="details"><br><br>Stage:
+    <div id="stageOne">1. Get node IDs</div><br>
+        <div id="s1" class="inner"></div><br>
+    <div id="stageTwo">2. Get paths per node ID</div><br>
+        <div id="s2" class="inner"></div><br>
+    <div id="stageThree">3. Get natural text per path per node ID</div><br>
+        <div id="s3" class="inner">-</div><br>
+    <div id="stageFour">4. Get embeddings per natural text per path per node ID</div><br>
+        <div id="s4" class="inner">-</div><br>
+    <div id="stageFive">5. Add embeddings as vectors to vector db per node ID</div><br>
+        <div id="s5" class="inner">-</div><br>
+    <div id="stageSix">6. Process check</div><br>
+        <div id="s6" class="inner">-</div><br>
+</div>
 
 </body>
 </html>
