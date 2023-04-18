@@ -12,21 +12,31 @@ function isValidHttpUrl(string){
 }
 
 function parseFull(arrayOfPassedObjects) {
-    //works on JSON of paths ending in empty leaf nodes returns the leafNodeID and the text
+    //works on JSON of neo4j paths; returns the path as an array of the ids, a string of same 45:12:82, and the text
     let parsedArrayOfObjects = [];
     let lastSegmentEndId = 1;
     //parse each path
     arrayOfPassedObjects.forEach(path => {
+        let pathArrayIDs = [];
         let pathText = '';
-        let leafNodeIDint = path._fields[0].segments.at(-1).end.identity.low;
+        let pathElementCount;
         let pathSegments = path._fields[0].segments;
-        pathText += `There are ${pathSegments.length} interrelated segments in this path. `;
+        if (pathSegments.length > 1){
+            pathElementCount = ((pathSegments.length * 2) -1);
+        } else {
+            pathElementCount = (pathSegments.length * 2);
+        }
+        pathText += `There are ${pathElementCount} interrelated elements in this path. `;
         //parse each segment
         pathSegments.forEach(async pathElement => {
             let startLabelLowercase = pathElement.start.labels[0].split('_').join(' ').toLowerCase();
             let endLabelLowercase = pathElement.end.labels[0].split('_').join(' ').toLowerCase();
             let relationshipLabelLowercase = pathElement.relationship.type.split('_').join(' ').toLowerCase();
-
+            if (pathArrayIDs.length == 0 || pathElement.start.identity.low != pathArrayIDs.at(-1)){
+                pathArrayIDs.push(pathElement.start.identity.low, pathElement.relationship.identity.low, pathElement.end.identity.low);
+            } else {
+                pathArrayIDs.push(pathElement.relationship.identity.low, pathElement.end.identity.low);
+            }
             pathText += `This segment has a ${startLabelLowercase} that ${relationshipLabelLowercase} a ${endLabelLowercase}. `;
             //first node in segment
             let descriptionCapture = '';
@@ -78,7 +88,9 @@ function parseFull(arrayOfPassedObjects) {
                 });
             }
         })
-        parsedArrayOfObjects.push({'leafNodeID': leafNodeIDint, 'naturalText': pathText});
+        let pathIDsString = pathArrayIDs.join(':');
+        let initiatingNode = pathArrayIDs[0];
+        parsedArrayOfObjects.push({'initiatingNode': initiatingNode, 'pathIDsString': pathIDsString, 'pathArrayIDs': pathArrayIDs, 'naturalText': pathText});
     })
     return parsedArrayOfObjects;
 }

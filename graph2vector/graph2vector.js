@@ -27,17 +27,32 @@ async function startProcess(){
 async function cycleThroughPaths(nodeLst, psswrd, strtNode, dist){
     for (const obj of nodeLst) {
         let objID = obj._fields[0].identity.low;
-        let pathCount = await getPaths(objID, psswrd, strtNode, dist);
+        let paths = await getPaths(objID, psswrd, strtNode, dist);
+        let pathCount = paths.length;
         divContentFiller('s2', `${pathCount} paths returned for node ${objID}\n`);
+        let pathsIntoTextArray = await pathsIntoText(paths, startNode);
+        let textIntoEmbeddingsArray = await batchEmbeddingRequest(pathsIntoTextArray, psswrd);
+        let USDcost = (tokenTotal / 1000) * 0.0004;
+        divContentFiller('s4', `---${textIntoEmbeddingsArray.length} embeddings produced at a cost of ${tokenTotal} tokens and $${USDcost}.`);
+        let insertInVector = await vectorInsertion(textIntoEmbeddingsArray, strtNode, psswrd);
+        divContentFiller('s5', insertInVector);
     }
     divContentFiller('s2', `---process complete.`);
+    divContentFiller('s3', `---process complete.`);
+}
+
+async function pathsIntoText(pathArray, startNode){
+    let pathTextArray = await parseFull(pathArray);
+    console.log('pathTextArray', pathTextArray);
+    divContentFiller('s3', `${pathTextArray.length} paths returned for node ${startNode}\n`);
+    return pathTextArray;
 }
 
 async function getPaths(nodeID, password, startNode, distance){
     let cypherPathQuery = `MATCH path = (q:${startNode} WHERE ID(q) = ${nodeID})-[r*1..${distance}]->(n) WHERE NOT (n:${startNode}) RETURN path`;
     let paths = await neo4jQuery(cypherPathQuery, password);
     console.log('returned paths', paths);
-    return paths.length;
+    return paths;
 }
 
 async function neo4jQuery(cypher, psswrd){
