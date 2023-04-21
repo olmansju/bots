@@ -32,13 +32,15 @@ async function cycleThroughPaths(nodeLst, psswrd, strtNode, dist){
         divContentFiller('s2', `${pathCount} paths returned for node ${objID}\n`);
         let pathsIntoTextArray = await pathsIntoText(paths, startNode);
         let textIntoEmbeddingsArray = await batchEmbeddingRequest(pathsIntoTextArray, psswrd);
-        let USDcost = (tokenTotal / 1000) * 0.0004;
-        divContentFiller('s4', `---${textIntoEmbeddingsArray.length} embeddings produced at a cost of ${tokenTotal} tokens and $${USDcost}.`);
+        divContentFiller('s4', `${textIntoEmbeddingsArray.length} embeddings produced.\n`);
         let insertInVector = await vectorInsertion(textIntoEmbeddingsArray, strtNode, psswrd);
         divContentFiller('s5', insertInVector);
     }
     divContentFiller('s2', `---process complete.`);
     divContentFiller('s3', `---process complete.`);
+    let USDcost = (tokenTotal / 1000) * 0.0004;
+    divContentFiller('s4', `---process complete, ${tokenTotal} tokens charged totalling $${USDcost}.`);
+    divContentFiller('s6', `---all done.`);
 }
 
 async function pathsIntoText(pathArray, startNode){

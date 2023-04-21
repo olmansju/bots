@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <script lang="" defer src="vectordb.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>Vector DB admin</title>
+</head>
+<body>
+<h2>Vector DB admin</h2>
+<br>
+
+<div id="request">
+  <input type="text" id="password" name="password"><br><br>
+  <select name="index" id="index">
+    <option value="ilt">ilt</option>
+  </select>
+  <select name="namespace" id="namespace">
+    <option value="teac259">teac259</option>
+    <option value="advisorBot">advisorBot</option>
+  </select>
+  <select name="action" id="action">
+    <option value="deleteNamespace">Delete vectors by namespace</option>
+    <option value="describeIndex">Describe Index</option>
+    <option value="describeNamespace">Describe Namespace</option>
+  </select>
+
+  <button type="button" id="processButton">process</button>
+</div>
+
+<div id="details"><br><br>Details:
+  <div id="stageOne">1. Action</div><br>
+  <div id="s1" class="inner"></div><br>
+  <div id="stageTwo">2. Result</div><br>
+  <div id="s2" class="inner"></div><br>
+</div>
+
+</body>
+</html>
