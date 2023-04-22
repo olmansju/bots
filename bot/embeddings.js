@@ -1,5 +1,5 @@
 
-async function embeddingRequest(userText){
+async function getUserResponseEmbeddings(userText){
     //this function takes a string and returns an embedding array of 1536 vectors or 0
     let res;
     let inputString = userText;
@@ -26,7 +26,7 @@ async function embeddingRequest(userText){
     }
 }
 
-async function getCosineSimilarity(queryEmbeddings){
+async function checkSimilarity(queryEmbeddings){
     //this function takes an array of 1536 vectors and compares it to course embeddings returning the top 3 matches
     if (queryEmbeddings.length > 1200){
         console.log('queryObject.embeddings is:', queryEmbeddings);

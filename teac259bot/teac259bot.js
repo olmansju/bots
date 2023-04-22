@@ -10,7 +10,6 @@ let textInputReady = document.getElementById("userInput");
 textInputReady.addEventListener("keydown", function (ee) {
     if (ee.key === "Enter"){
         startResponse();
-        console.log("Enter pressed in chat")
     }
 });
 
