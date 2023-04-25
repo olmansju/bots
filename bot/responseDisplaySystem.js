@@ -1,4 +1,4 @@
-//this implementation written with GPT4
+//this implementation written in collaboration with GPT4
 const typeWriterQueue = [];
 let currentSpeed = 100; // Default typing speed
 let isProcessing = false; // Indicates whether the queue is being processed

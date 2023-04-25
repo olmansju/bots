@@ -26,8 +26,8 @@ async function getUserResponseEmbeddings(userText){
     }
 }
 
-async function checkSimilarity(queryEmbeddings){
-    //this function takes an array of 1536 vectors and compares it to course embeddings returning the top 3 matches
+async function queryPineconeForBestMatch(embeddings, uniID, nodeID){
+    //this function takes an array of 1536 vectors and requests from Pinecone the best matches
     if (queryEmbeddings.length > 1200){
         console.log('queryObject.embeddings is:', queryEmbeddings);
         const cosineSimilarity = (vecA, vecB) => {
