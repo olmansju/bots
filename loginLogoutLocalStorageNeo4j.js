@@ -62,7 +62,7 @@ function checkLocalStorage(){
     if (person != null) {
         let personObject = JSON.parse(person);
         if (personObject.neo4jID){
-            console.log("person object found with neo4jID:", person.neo4jID);
+            console.log("person object found with neo4jID:", personObject.neo4jID);
             userName = personObject.fName;
             neo4jID = personObject.neo4jID;
             console.log('userName is now:', userName, 'set from local storage');
@@ -76,7 +76,7 @@ function checkLocalStorage(){
         } else {
             loggedInStatus = 0;
             setLogInLogOut(loggedInStatus);
-            document.getElementById('needToLogInMessage').innerText = `0. Log in... `;
+            document.getElementById('needToLogInMessage').innerText = `---------> 0. Log in... `;
         }
     } else {
         loggedInStatus = 0;
