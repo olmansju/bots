@@ -1,3 +1,5 @@
+const pineconeIndex = "ilt";
+let namespace = "advisorBot";
 
 async function getUserResponseEmbeddings(userText){
     //this function takes a string and returns an embedding array of 1536 vectors or 0
@@ -26,26 +28,39 @@ async function getUserResponseEmbeddings(userText){
     }
 }
 
-async function queryPineconeForBestMatch(embeddings, uniID, nodeID){
+async function queryPineconeForBestMatch(embeddings, uniID){
     //this function takes an array of 1536 vectors and requests from Pinecone the best matches
-    if (queryEmbeddings.length > 1200){
-        console.log('queryObject.embeddings is:', queryEmbeddings);
-        const cosineSimilarity = (vecA, vecB) => {
-            return math.dot(vecA, vecB) / (math.norm(vecA) * math.norm(vecB));
-        };
-        const contentEmbeddings = embeddingObjectArray;
-        const queryEmbedding = queryEmbeddings;
-
-        const similarities = contentEmbeddings.map(contentEmbedding => cosineSimilarity(queryEmbedding, contentEmbedding.embeddings));
-
-        const top3Indices = similarities
-            .map((value, index) => ({ value, index }))
-            .sort((a, b) => b.value - a.value)
-            .slice(0, 3)
-            .map(entry => entry.index);
-
-        const top3Matches = top3Indices.map(index => contentEmbeddings[index]);
-        return top3Matches;
+    if (embeddings.length > 1530){
+        console.log('embeddings ready to go...');
+        let res;
+        let resSpecific;
+        console.log('calling Express /pineconeQuery', 'query is:', embeddings);
+        await axios.post('/pineconeQuery', {
+            pineconeVector: embeddings,
+            numOfMatches: 3,
+            includeVectors: false,
+            includeVectorMetadata: true,
+            filter: {
+                initiatingNodeID: parseInt(neo4jID)
+            },
+            password: uniID,
+            index: pineconeIndex,
+            namespace: namespace
+        })
+            .then(function (response) {
+                res = response;
+                console.log('the pineconeQuery res', res);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        if (res.status !== 200 && res.status !== 201) {
+            console.log('Pinecone query status:', res.status);
+            resSpecific = '0 something went wrong';
+        } else {
+            resSpecific = res.data.theResult;
+        }
+        return resSpecific;
     } else {
         return 0 ;
     }

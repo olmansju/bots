@@ -27,17 +27,8 @@ async function GPT35request(mesArray, userID, answerLength, mod, temp, botVersio
         });
     if (!res.ok){ console.log('Fetch error: ', res.status);}
     let GPT35response = res["data"][0]["GPT35response"];
-    let identity = res["data"][1]["allowed"];
     lastGPT35convoID = res["data"][2];
     console.log('gpt-3.5-turbo conversation id:', lastGPT35convoID);
-    if (identity.length > 1){
-        userName = identity[1];
-        if (typeof loggedInStatus !== 'undefined') {
-            if (loggedInStatus != 1) {
-                saveToLocalStorage(identity);
-            }
-        }
-    }
     console.log('response', GPT35response);
     return GPT35response;
 }
