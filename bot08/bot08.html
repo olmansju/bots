@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Horatio</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script lang="" defer src="gptCalls.js"></script>
+    <script lang="" defer src="embeddings.js"></script>
+    <script lang="" defer src="bot.js"></script>
+    <script lang="" defer src="../loginLogoutLocalStorageNeo4j.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<div id="logInDiv" class="loggingClass">
+    <span id="needToLogInMessage" class="notLoggedIn"></span>
+    <input type="text" id="univID" name="univID" class="notLoggedIn" placeholder="NUID" minlength="8" required />
+    <button id="logIn" class="notLoggedIn" > log in </button>
+    <span id="logStatus" class="notLoggedIn"></span>
+</div>
+<div id="logOutDiv" class="loggingClass">
+    <span id="loggedInMessage" class="loggedIn"></span>
+    <button id="logOut" class="loggedIn"> log out </button>
+</div>
+
+<div id="gridHoratio">
+    <div id="gridLeft">
+        <div id="topLeft">
+        <span id="titleText"><h2 class="redtext">Horatio an Advising ChatBot</h2>
+            Designed for ILT and TLTE graduate students</span>
+        </div>
+
+        <div id="restLeft"><br>
+            <div id="gridWelcome">
+                <img src="../images/horatio.png" height="62" width="61"/>
+                <span class="chatBubbleBotClass">Hi, I'm Horatio, ask me PhD advising questions!</span></div>
+            <div id="sideBySideParent" class="userResponse">
+                <input type="text" id="userInput" name="userInput" class="chatBubbleUserClass" style="width: 100%;" onfocus="this.value=''" />
+                <button id="askButton" name="askButton">Ask...</button>
+                <img class="reverseIMG" src="../images/student_at_laptop.png" height="42" width="41"/>
+            </div>
+            <div><br><br><br></div>
+            <div id="chatRecord">
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="right">Resources <br>
+        <img src="../images/horatio.png" height="242" width="241"/>
+    </div>
+
+</div>
+
+</body>
+</html>
