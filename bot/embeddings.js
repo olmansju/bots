@@ -41,7 +41,7 @@ async function queryPineconeForBestMatch(embeddings, uniID){
             includeVectors: false,
             includeVectorMetadata: true,
             filter: {
-                initiatingNodeID: parseInt(neo4jID)
+                initiatingNode: parseInt(neo4jID)
             },
             password: uniID,
             index: pineconeIndex,

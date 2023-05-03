@@ -31,14 +31,16 @@ async function startProcess(){
 async function cycleThroughPaths(nodeLst, psswrd, strtNode, dist){
     for (const obj of nodeLst) {
         let objID = obj._fields[0].identity.low;
-        let paths = await getPaths(objID, psswrd, strtNode, dist);
-        let pathCount = paths.length;
-        divContentFiller('s2', `${pathCount} paths returned for node ${objID}\n`);
-        let pathsIntoTextArray = await pathsIntoText(paths, startNode);
-        let textIntoEmbeddingsArray = await batchEmbeddingRequest(pathsIntoTextArray, psswrd);
-        divContentFiller('s4', `${textIntoEmbeddingsArray.length} embeddings produced.\n`);
-        let insertInVector = await vectorInsertion(textIntoEmbeddingsArray, strtNode, psswrd);
-        divContentFiller('s5', insertInVector);
+        if (objID > 68){
+            let paths = await getPaths(objID, psswrd, strtNode, dist);
+            let pathCount = paths.length;
+            divContentFiller('s2', `${pathCount} paths returned for node ${objID}\n`);
+            let pathsIntoTextArray = await pathsIntoText(paths, startNode);
+            let textIntoEmbeddingsArray = await batchEmbeddingRequest(pathsIntoTextArray, psswrd);
+            divContentFiller('s4', `${textIntoEmbeddingsArray.length} embeddings produced.\n`);
+            let insertInVector = await vectorInsertion(textIntoEmbeddingsArray, strtNode, psswrd);
+            divContentFiller('s5', insertInVector);
+        }
     }
     divContentFiller('s2', `---process complete.`);
     divContentFiller('s3', `---process complete.`);
