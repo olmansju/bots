@@ -45,7 +45,7 @@ async function cycleThroughPaths(nodeLst, psswrd, strtNode, dist){
 
 async function pathsIntoText(pathArray, startNode){
     let pathTextArray = await parseFull(pathArray);
-    console.log('pathTextArray', pathTextArray);
+    //console.log('pathTextArray', pathTextArray);
     divContentFiller('s3', `${pathTextArray.length} paths returned for node ${startNode}\n`);
     return pathTextArray;
 }
@@ -53,7 +53,7 @@ async function pathsIntoText(pathArray, startNode){
 async function getPaths(nodeID, password, startNode, distance){
     let cypherPathQuery = `MATCH path = (q:${startNode} WHERE ID(q) = ${nodeID})-[r*1..${distance}]->(n) WHERE NOT (n:${startNode}) RETURN path`;
     let paths = await neo4jQuery(cypherPathQuery, password);
-    console.log('returned paths', paths);
+    //console.log('returned paths', paths);
     return paths;
 }
 

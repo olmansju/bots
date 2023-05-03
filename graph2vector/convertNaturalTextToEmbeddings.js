@@ -6,8 +6,8 @@ async function batchEmbeddingRequest(natTextArray){
     for (const obj of natTextArray) {
         let theObjPlusEmbeddings = await embeddingRequestForBatch(obj);
         batchEmbeddingsArray.push(theObjPlusEmbeddings);
-        console.log(theObjPlusEmbeddings);
-        divContentFiller('s4', `embeddings added to ${theObjPlusEmbeddings.pathIDsString} \n`);
+        //console.log(theObjPlusEmbeddings);
+        //divContentFiller('s4', `embeddings added to ${theObjPlusEmbeddings.pathIDsString} \n`);
     }
     console.log(`processing complete. ${batchEmbeddingsArray.length} embeddings`);
     return batchEmbeddingsArray;
@@ -17,14 +17,14 @@ async function embeddingRequestForBatch(theObj){
     let res;
     let mod = "text-embedding-ada-002";
     let theText = theObj.naturalText;
-    console.log('calling Express /embedADApost', 'naturalText is:', theText);
+    //console.log('calling Express /embedADApost', 'naturalText is:', theText);
     await axios.post('/embedADApost', {
         stringToEmbed: theText,
         model: mod
     })
         .then(function (response) {
             res = response;
-            console.log('post response is:', res);
+            //console.log('post response is:', res);
         })
         .catch(function (error) {
             console.log(error);

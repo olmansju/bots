@@ -3,7 +3,7 @@ let userName = "user";
 let neo4jID;
 let mod = "gpt-3.5-turbo-0301";
 let temp = 0.5;
-let version = "AB 0.09";
+let version = "AB 0.09b";
 const chatArray = [];
 
 document.getElementById("askButton").addEventListener("click", initiateResponse);
@@ -162,4 +162,4 @@ function prepMessage(cArray){
     let theMessage = cArray.slice(Math.max(cArray.length - 5, 1));
     theMessage.unshift(cArray[0]);
     return theMessage;
-    }
+}

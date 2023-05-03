@@ -97,6 +97,7 @@ function setLogInLogOut(status){
             elem.style.display = 'block';
         });
         console.log('you are logged in');
+
     } else {
         Array.from(notLoggedIn).forEach(elem => {
             elem.style.display = 'block';
