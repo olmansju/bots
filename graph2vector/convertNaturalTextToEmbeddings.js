@@ -1,4 +1,5 @@
 let tokenTotal = 0;
+let pathProcessTotal = 0;
 
 async function batchEmbeddingRequest(natTextArray){
     const batchEmbeddingsArray = [];
@@ -7,7 +8,8 @@ async function batchEmbeddingRequest(natTextArray){
         let theObjPlusEmbeddings = await embeddingRequestForBatch(obj);
         batchEmbeddingsArray.push(theObjPlusEmbeddings);
         //console.log(theObjPlusEmbeddings);
-        //divContentFiller('s4', `embeddings added to ${theObjPlusEmbeddings.pathIDsString} \n`);
+        pathProcessTotal += 1;
+        divContentReplacer('s4', `total embeddings requested: ${pathProcessTotal} \n`);
     }
     console.log(`processing complete. ${batchEmbeddingsArray.length} embeddings`);
     return batchEmbeddingsArray;
@@ -29,7 +31,7 @@ async function embeddingRequestForBatch(theObj){
         .catch(function (error) {
             console.log(error);
         });
-    if (!res.ok){ console.log('Fetch error: ', res.status);}
+    if (res.status !== 200) { console.log('Fetch error: ', res.status); }
     let ADAresponse = res["data"][0]["ADAresponse"];
     tokenTotal += ADAresponse.usage.total_tokens;
     theObj.values = ADAresponse.data[0].embedding;

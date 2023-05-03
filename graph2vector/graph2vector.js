@@ -5,6 +5,10 @@ function divContentFiller(divID, message){
     document.getElementById(divID).innerText += message;
 }
 
+function divContentReplacer(divID, message){
+    document.getElementById(divID).innerText = message;
+}
+
 function wipeStatusDIVmessages(listOfDIVs){
     listOfDIVs.forEach(id => {
         document.getElementById(id).innerText = '';
