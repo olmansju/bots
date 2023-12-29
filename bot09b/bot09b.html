@@ -9,6 +9,8 @@
     <script lang="" defer src="bot.js"></script>
     <script lang="" defer src="../loginLogoutLocalStorageNeo4j.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/xstate@5.0.0-beta.9/dist/xstate.umd.min.js"></script>
+
 </head>
 <body>
 
@@ -49,6 +51,16 @@
 
     <div id="right">Resources <br>
         <img src="../images/horatio.png" height="242" width="241"/>
+        <br><ul style="text-align: left; color: #555555">Example questions:
+            <li>"What does my advisor have to say about [milestone], [tips, overview, timing]?"</li>
+            <li>"Tell me about the design based research pathway in my program."</li>
+            <li>"What is the timeline for doing my comps?"</li>
+            <li>"When is TEAC 860 typically offered?"</li>
+            <li>"I have just been admitted to the program now what should I do?"</li>
+        </ul>
+        <br>Graph database structure:
+        <br>
+        <img src="../images/databaseConfig.png" height="667"/>
     </div>
 
 </div>

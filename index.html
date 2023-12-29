@@ -11,8 +11,8 @@
 <b>Advising Bots</b>
 <ul>
     <li><a href="bot/bot.html"> Horatio</a>: most recent version</li>
-    <li><a href="bot09/bot09b.html"> bot09b</a>: Justin's attempt at open-ended orchestration (in progress)</li>
-    <li><a href="bot09/bot09a.html"> bot09a</a>: Deef's attempt at open-ended orchestration (in progress)</li>
+    <li><a href="bot09b/bot09b.html"> bot09b</a>: Using a Finite State Machine (in progress)</li>
+    <li><a href="bot09a/bot09a.html"> bot09a</a>: Deef's attempt at open-ended orchestration (in progress)</li>
     <li><a href="bot08/bot08.html"> bot08</a>: Graph db stores content, per-advisee paths generated and converted to vectors, vectors compared to advisee queries</li>
     <li><a href="bot07/bot07.html"> bot07</a>: UI/UX redesign, model upgrade</li>
     <li><a href="bot06/bot06.html"> bot06</a>: added login and local storage</li>
@@ -75,10 +75,11 @@
 Built with:<ul>
     <li>vanilla JavaScript frontend;</li>
     <li>node + express JS backend;</li>
-    <li>neo4j graph db;</li>
-    <li>nedb db;</li>
-    <li>pinecone vector db</li>
+    <li>neo4j graph db (content and pathways generation);</li>
+    <li>nedb db (telemetry data);</li>
+    <li>pinecone vector db (embeddings + metadata storage and cosine similarity queries)</li>
     <li>openAi GPT-3.5, GPT-4, ADA embeddings APIs;</li>
+    <li>designed in Webstorm;</li>
     <li>tested in Firefox</li>
 </ul>
 <br><br>

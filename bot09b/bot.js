@@ -1,9 +1,10 @@
 const botName = "Horacio";
 let userName = "user";
 let neo4jID;
-let mod = "gpt-3.5-turbo-0301";
+let modx = "gpt-3.5-turbo-0301";
+let mod = "gpt-4";
 let temp = 0.5;
-let version = "AB 0.09b";
+let version = "AB 0.09";
 const chatArray = [];
 
 document.getElementById("askButton").addEventListener("click", initiateResponse);
@@ -37,7 +38,7 @@ async function initiateProcess(query, univID){
     //get embeddings (in the future maybe don't use await as the next part should take longer and so this will be ready before the await returns)
     let theResponseEmbeddings = await getUserResponseEmbeddings(query);
     //establish the nature of question use await
-    let prompt = `You are ${botName}, a PhD advising assistant. You are helping evaluate student submitted queries. For each query provide an answer to the following questions: \n QUERY1# on a scale of 0.001 to 0.999 what is the probability that this query is related to PhD program advising (please answer only with a number, no additional text)? \n QUERY2# if the probability in QUERY#1 was greater than .5, what would be an interesting (e.g. useful, witty, amusing) response to this query that would occupy the user while the answer was looked up (in 280 characters or less)? \n QUERY3# if the probability in QUERY#1 was less than .5001, what would be your best answer to this question? \n QUERY4# what clarifying question would you ask of someone asking this query? \n QUERY5# what are two insights you can interpolate from the student's query? \n Prepend your answer to each question with: QUERY1#, QUERY2#, QUERY3#, QUERY4#, and QUERY5# respectively \n`;
+    let prompt = `You are ${botName}, a PhD advising assistant. Please evaluate student queries. For each query provide an answer to the following questions: \n QUERY1# on a scale of 0.001 to 0.999 what is the probability that this query is related to PhD program advising (please answer only with a number, no additional text)? \n QUERY2# if the probability in QUERY#1 was greater than .5, what would be an interesting (e.g. useful, witty, amusing) response to this query that would occupy the user while the answer was looked up (in 280 characters or less)? \n QUERY3# if the probability in QUERY#1 was less than .5001, what would be your best answer to this question? \n QUERY4# what clarifying question would you ask? \n QUERY5# what can interpolate from the student's query (10 words or less)? \n Prepend your answer to each question with: QUERY1#, QUERY2#, QUERY3#, QUERY4#, and QUERY5# respectively \n`;
     evaluativeArray.push({'role': 'system', 'content': prompt});
     let userObject = {'role': 'user', 'content': query};
     buildChatBubble(userObject);
@@ -162,4 +163,4 @@ function prepMessage(cArray){
     let theMessage = cArray.slice(Math.max(cArray.length - 5, 1));
     theMessage.unshift(cArray[0]);
     return theMessage;
-}
+    }

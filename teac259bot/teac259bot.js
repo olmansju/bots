@@ -1,9 +1,8 @@
-const botName = "Alex";
-let userName = "Student";
-let mod = "gpt-3.5-turbo-0301";
-let temp = 0.2;
-let version = "TA-259 0.06";
-const chatArray = [];
+const botName = "Botty";
+let userThreadID = "0"
+let mod = "gpt-4-1106-preview";
+let assistant = "asst_uOqBE2BhPdvAJ6sPZxohxvpR";
+let version = "TA-259 0.1";
 
 document.getElementById("askButton").addEventListener("click", startResponse);
 let textInputReady = document.getElementById("userInput");
@@ -18,34 +17,22 @@ async function startResponse() {
         document.getElementById('needToLogInMessage').innerText = '-----------------------> You need to log in before we can talk.';
         return;
     }
-    if (chatArray.length < 1){
-        let prompt = `You are ${botName}, a helpful and kind teaching assistant for TEAC 259, an undergraduate course on technology integration. You are helping a student named, ${userName}. Answer ${userName} as concisely as possible.`;
-        chatArray.push({'role': 'system', 'content': prompt});
-    }
     let responseText;
     responseText = document.getElementById("userInput").value;
     let univID = document.getElementById("univID").value;
     let trimmedResponseText = responseText.trim();
     if (trimmedResponseText !== "") {
-        let textEmbeddingsArray = await embeddingRequest(trimmedResponseText);
-        let topThreePaths = await getCosineSimilarity(textEmbeddingsArray);
-        console.log('top 3 paths', topThreePaths[0].naturalText, topThreePaths[1].naturalText, topThreePaths[2].naturalText);
-        let contentInfo = {'role': 'system', 'content': `use the following information about the course to respond: ${topThreePaths[0].naturalText}`};
-        chatArray.push(contentInfo);
         let userObject = {'role': 'user', 'content': trimmedResponseText};
-        chatArray.push(userObject);
         buildChatBubble(userObject);
         document.getElementById("userInput").value = "";
         document.getElementById("userInput").disabled = true;
-        botResponse(chatArray, univID);
+        botResponse(userObject, univID, userThreadID);
     }
 }
 
-async function botResponse(chArray, userID){
-    let preppedMessageArray = prepMessage(chArray);
+async function botResponse(uObject, uID, uThreadID){
     let responseObject;
-    responseObject = await callGPT35turboBotUI(preppedMessageArray, userID, mod, temp, version);
-    chatArray.push(responseObject);
+    responseObject = await callGPT4aTurboBotUI(uObject, uID, mod, version, uThreadID, assistant);
 }
 
 function buildChatBubble(messageObject){
@@ -72,10 +59,4 @@ function buildChatBubble(messageObject){
     }
     chatRecord.prepend(divEle);
     //chatRecord.prepend(brEle);
-}
-
-function prepMessage(cArray){
-    let theMessage = cArray.slice(Math.max(cArray.length - 5, 1));
-    theMessage.unshift(cArray[0]);
-    return theMessage;
 }
