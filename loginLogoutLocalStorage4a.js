@@ -61,6 +61,7 @@ function checkLocalStorage(){
         console.log('userName is now:', userName, 'set from local storage');
         let lName = personObject.lName;
         let NUID = personObject.NUID;
+        userThreadID = personObject.threadID;
         document.getElementById("univID").value = NUID;
         loggedInStatus = 1;
         setLogInLogOut(loggedInStatus);

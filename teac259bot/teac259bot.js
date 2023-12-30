@@ -1,5 +1,5 @@
 const botName = "Botty";
-let userThreadID = "0"
+let userThreadID = "0";
 let mod = "gpt-4-1106-preview";
 let assistant = "asst_uOqBE2BhPdvAJ6sPZxohxvpR";
 let version = "TA-259 0.1";

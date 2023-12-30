@@ -38,6 +38,9 @@ async function GPT4aRequest(mesObj, userID, answerLength, mod, botVersion, userT
             if (loggedInStatus != 1) {
                 saveToLocalStorage(identity);
             }
+            if (identity.threadID != userThreadID) {
+                saveToLocalStorage(identity);
+            }
         }
     }
     console.log('response', GPT4aResponse);
